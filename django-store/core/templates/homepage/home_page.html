@@ -1,0 +1,765 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{%  block title %}zoomit{% endblock %}
+{% block body %}
+
+
+      <!-- main -->
+    <nav class="navbar navbar-expand-lg navbar-light nav_bar d-flex justify-content-between" style="position: sticky;position: -webkit-sticky;position: -webkit-sticky;
+    position: sticky;
+    top: 0;z-index: 1;">
+
+      <div>
+        <button class="basket" ><i class="fas fa-shopping-basket"></i></button>
+        <span class="m-2">|</span>
+        <button class="login_btn">ورود به حساب کاربری   <i class="fas fa-user"></i></button></div>
+         <div class="d-flex">
+          <div style="margin-top: 20px;">
+            <form>
+              <button class="search_btn"><i class="fas fa-search " style="color: gray;font-size: 10px;text-align: right;"></i></button>
+              <input type="text" class="search_field" placeholder="... جستجو کن ">
+            </form>
+
+
+          </div>
+          <div class="bg-success m-2">
+
+              <img src="{% static 'img/1597738603766.jpeg' %}" style="height: 50px;width: 50px;">
+        </div>
+      </div>
+    </nav>
+
+
+
+
+
+
+    <div class="row w-100 p-0 m-0 cat_div mr-2 mb-1 d-flex justify-content-around">
+      <div class="dropdown mt-2">
+        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i id="button" class="fa fa-list-alt" aria-hidden="true"></i> دسته بندی ها</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdowns">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+
+      <div class="dropdown mt-2">
+        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store"></i> فروشگاه ها</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+
+
+      <div class="dropdown mt-2">
+        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> برندها</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
+
+
+      <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 10px;"><i class="far fa-question-circle"></i> سوالی دارید</button>
+    </div>
+
+
+
+
+
+
+    <!-- first slider -->
+    <div class="container mt-2 mb-2 h-100 w-100">
+      <div class="row h-100 w-100 p-0 m-0 d-flex justify-content-center">
+        <div class="row col-12 col-sm-12 col-md-12 col-lg-5 p-0 m-0">
+          <div class="col-12 bg-info p-0 m-0" style="height: 180px;border-radius: 15px;">
+            <img style="width: 100%;height: 100%;border-radius: 15px;"  src="{% static 'img/head1.gif' %}">
+          </div>
+          <div class="col-12 bg-dark p-0 m-0" style="height: 180px;border-radius: 15px;">
+            <img style="width: 100%;height: 100%;border-radius: 15px;" src="{% static 'img/head2.gif' %}">
+          </div>
+
+
+        </div>
+        <div id="carouselExampleIndicators" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-6 bg-success" data-ride="carousel" style="height: 360px;border-radius: 20px;">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="..."  alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="..." alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="..." alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- first slider -->
+
+
+
+
+
+
+
+
+    <!-- for off -->
+    <div class="container-fluid bg-danger">
+      <div class="row d-flex justify-content-around">
+        <div class="col-12 mb-4 mt-4" style="text-align: center;color: white;"><i class="fa fa-percent" aria-hidden="true"></i>   پیشنهاد های شگفت انگیز  <i class="fa fa-percent" aria-hidden="true"></i></div>
+        <!-- <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 m-0 p-2" style="height: 250px;background-color: white;border-radius: 15px;">
+
+
+          <a class="w-100 h-100 " href="#">
+            <img src="1597738603766.jpeg" style="width: 100%; height: 60%;border-radius: 15px;">
+          </a>
+          <div class="top-right" style=" position: absolute;top: 150pxpx;right: 16px;">اسم محصول</div>
+          <div style="  position: absolute;bottom: 30px;left: 16px;">
+            <span class="badge badge-danger mr-1">%۲۰</span>
+            <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
+          </div>
+          <div class="top-right" style=" position: absolute;top:220px;left:30px;"><span>۵۵,۰۰۰</span></div>
+
+
+
+        </div>
+        <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 m-0 p-2" style="height: 250px;background-color: white;border-radius: 15px;">
+
+
+          <a class="w-100 h-100 " href="#">
+            <img src="1597738603766.jpeg" style="width: 100%; height: 60%;border-radius: 15px;">
+          </a>
+          <div class="top-right" style=" position: absolute;top: 150pxpx;right: 16px;">اسم محصول</div>
+          <div style="  position: absolute;bottom: 30px;left: 16px;">
+            <span class="badge badge-danger mr-1">%۲۰</span>
+            <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
+          </div>
+          <div class="top-right" style=" position: absolute;top:220px;left:30px;"><span>۵۵,۰۰۰</span></div>
+
+
+
+        </div>
+        <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 m-0 p-2" style="height: 250px;background-color: white;border-radius: 15px;">
+
+
+          <a class="w-100 h-100 " href="#">
+            <img src="1597738603766.jpeg" style="width: 100%; height: 60%;border-radius: 15px;">
+          </a>
+          <div class="top-right" style=" position: absolute;top: 150pxpx;right: 16px;">اسم محصول</div>
+          <div style="  position: absolute;bottom: 30px;left: 16px;">
+            <span class="badge badge-danger mr-1">%۲۰</span>
+            <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
+          </div>
+          <div class="top-right" style=" position: absolute;top:220px;left:30px;"><span>۵۵,۰۰۰</span></div>
+
+
+
+        </div>
+        <div class="col-xs-8 col-sm-6 col-md-4 col-lg-2 m-0 p-2" style="height: 250px;background-color: white;border-radius: 15px;">
+
+
+          <a class="w-100 h-100 " href="#">
+            <img src="1597738603766.jpeg" style="width: 100%; height: 60%;border-radius: 15px;">
+          </a>
+          <div class="top-right" style=" position: absolute;top: 150pxpx;right: 16px;">اسم محصول</div>
+          <div style="  position: absolute;bottom: 30px;left: 16px;">
+            <span class="badge badge-danger mr-1">%۲۰</span>
+            <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
+          </div>
+          <div class="top-right" style=" position: absolute;top:220px;left:30px;"><span>۵۵,۰۰۰</span></div>
+
+
+
+        </div> -->
+        <div class="col-12 row d-flex justify-content-around">
+          <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 mb-3" style="height: 320px;background-color: white;border-radius: 15px;" >
+
+            <a class="w-100 h-100" href="#" style="color:black;text-decoration: none;">
+              <img src="{% static 'img/sigol.jpg' %}"  style="width: 100%; height: 80%rem;border-radius: 15px;">
+            <div class="mt-3" style="text-align: right;">اسم محصول</div>
+            <div>
+              <span class="badge badge-danger mr-1">%۲۰</span>
+              <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
+            </div>
+            <div><span>۵۵,۰۰۰</span></div>
+            </a>
+
+          </div>
+
+
+          <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 mb-3" style="height: 320px;background-color: white;border-radius: 15px;" >
+
+            <a class="w-100 h-100" href="#" style="color:black;text-decoration: none;">
+              <img src="{% static 'img/sigol.jpg' %}" style="width: 100%; height: 80%rem ;border-radius: 15px;">
+            <div class="mt-3" style="text-align: right;">اسم محصول</div>
+            <div>
+              <span class="badge badge-danger mr-1">%۲۰</span>
+              <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
+            </div>
+            <div><span>۵۵,۰۰۰</span></div>
+            </a>
+
+          </div>
+
+          <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 mb-3" style="height: 320px;background-color: white;border-radius: 15px;" >
+
+            <a class="w-100 h-100" href="#" style="color:black;text-decoration: none;">
+              <img src="{% static 'img/sigol.jpg' %}"  style="width: 100%; height: 80%rem;border-radius: 15px;">
+            <div class="mt-3" style="text-align: right;">اسم محصول</div>
+            <div>
+              <span class="badge badge-danger mr-1">%۲۰</span>
+              <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
+            </div>
+            <div><span>۵۵,۰۰۰</span></div>
+            </a>
+
+          </div>
+
+
+          <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 mb-3" style="height: 320px;background-color: white;border-radius: 15px;" >
+
+            <a class="w-100 h-100" href="#" style="color:black;text-decoration: none;">
+              <img src="{% static 'img/sigol.jpg' %}"  style="width: 100%; height: 80%rem;border-radius: 15px;">
+            <div class="mt-3" style="text-align: right;">اسم محصول</div>
+            <div>
+              <span class="badge badge-danger mr-1">%۲۰</span>
+              <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
+            </div>
+            <div><span>۵۵,۰۰۰</span></div>
+            </a>
+
+          </div>
+
+
+
+        </div>
+        <div class="col-12 mb-4 mt-4" style="text-align: center;">
+          <a href="#" style="color: white;text-decoration: none;border: 1px solid white;padding: 7px;font-size: 12px;border-radius: 3px;"> مشاهده همه </a>
+        </div>
+
+      </div>
+    </div>
+    <!-- for off -->
+
+
+
+
+
+
+
+    <!-- for products -->
+    <div class="container mt-2 bg-light" style="border-radius:15px">
+          <div class="col-12 pt-3 mr-2" style="text-align: right;text-decoration:underline tomato;">گوشی هوشمند</div>
+          <div id="slider1" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row w-100 p-0 m-0 d-flex justify-content-around">
+
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+              <div class="carousel-item">
+
+
+
+                <div class="row w-100 p-0 m-0 d-flex justify-content-around">
+
+
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+
+
+                </div>
+
+
+              </div>
+              <div class="carousel-item">
+
+
+                <div class="row w-100 p-0 m-0 d-flex justify-content-around">
+
+
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                    <a href="#" style="text-decoration: none">
+                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                    </a>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+            <a class="carousel-control-prev my-auto" href="#slider1" role="button" data-slide="prev" style="width: 10px;height:50px;z-index:auto;background-color: rgb(148, 148, 148);">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next my-auto" href="#slider1" role="button" data-slide="next" style="width: 10px;height:50px;z-index:auto;background-color: rgb(148, 148, 148);">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    </div>
+    <!-- for products -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container-fluid mt-2 mb-2 bg-warning" style="height: auto;">
+      <div class="pt-3 mb-3" style="text-align: center;">بیشتر مدیر باش</div>
+      <div class="row d-flex justify-content-around w-100 h-100 p-0 m-0">
+
+          <div class="col-7 col-sm-7 col-md-7 col-lg-2 mt-2 mb-5 bg-light m-0 p-0" style="border-radius: 15px;" style="height: 100%;border-radius: 15px;">
+            <a href="#" style="text-decoration: none;color: black;">
+              <img class="w-100 h-80" style="border-radius: 15px;" src="{% static 'img/report2.jpg' %}" >
+              <div class="mb-2" style="text-align: center;font-size: 13px;">گزارش عملکرد کاربری</div>
+
+            </a>
+
+
+          </div>
+          <div class="col-7 col-sm-7 col-md-7 col-lg-2 mt-2 mb-5 bg-light m-0 p-0" style="border-radius: 15px;" style="height: 100%;border-radius: 15px;">
+            <a href="#" style="text-decoration: none;color: black;">
+              <img class="w-100 h-80 p-2" style="border-radius: 15px;"  src="{% static 'img/customers.png' %}">
+              <div class="mb-2" style="text-align: center;font-size: 13px;">باشگاه مشتریان</div>
+
+            </a>
+
+
+          </div>
+          <div class="col-7 col-sm-7 col-md-7 col-lg-2 mt-2 mb-5 bg-light m-0 p-0" style="border-radius: 15px;" style="height: 100%;border-radius: 15px;">
+            <a href="#" style="text-decoration: none;color: black;">
+              <img class="w-100 h-80" style="border-radius: 15px;" src="{% static 'img/hamkari.png' %}">
+              <div class="mb-2" style="text-align: center;font-size: 13px;">همکارم شو  </div>
+
+            </a>
+
+
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- for products -->
+    <div class="container mt-2 bg-light" style="border-radius:15px">
+      <div class="col-12 pt-3 mr-2" style="text-align: right;text-decoration:underline tomato;">لوازم جانبی</div>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="row w-100 p-0 m-0 d-flex justify-content-around">
+
+
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100"  src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row w-100 p-0 m-0 d-flex justify-content-around">
+
+
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row w-100 p-0 m-0 d-flex justify-content-around">
+
+
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                      <a href="#" style="text-decoration: none">
+                          <img class="mx-auto mt-4 w-100" src="{% static 'img/janebi.jpg' %}" style="width: 133px;height: 133px;">
+                          <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                          <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                          <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev my-auto" href="#carouselExampleControls" role="button" data-slide="prev" style="width: 10px;height:50px;z-index:auto;background-color: rgb(148, 148, 148);">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next my-auto" href="#carouselExampleControls" role="button" data-slide="next" style="width: 10px;height:50px;z-index:auto;background-color: rgb(148, 148, 148);">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+    </div>
+    <!-- for products -->
+
+
+    <div class="container-fluid mt-2 mb-2 bg-info" style="height: auto;">
+      <div class="pt-3 mb-2" style="text-align: center;color: white;"><i class="fas fa-gem"></i> برند های برتر <i class="fas fa-gem"></i></div>
+      <div class="row d-flex justify-content-around w-100 h-100 p-0 m-0">
+
+        <div class="col-7 col-sm-4 col-md-3 col-lg-2 mt-2 mb-5" style="border-radius: 15px;" style="height: 90%;border-radius: 15px;background-color: white;">
+          <a href="#" style="color:black;text-decoration: none;">
+            <div class="mx-auto p-2" style="background-color: white;border-radius: 15px;" >
+              <img class="h-80 mx-auto" src="{% static 'img/panasonic.png' %}"  style="border-radius: 15px;width: 100%;" >
+              <div style='text-align:center'><i class="fas fa-medal" style="color: rgb(0, 132, 255);" ></i> پاناسونیک <i style="color: rgb(0, 132, 255);" class="fas fa-medal"></i></div>
+            </div>
+
+          </a>
+
+        </div>
+
+
+
+        <div class="col-7 col-sm-4 col-md-3 col-lg-2 mt-2 mb-5" style="border-radius: 15px;" style="height: 90%;border-radius: 15px;background-color: white;">
+          <a href="#" style="color:black;text-decoration: none;">
+            <div class="mx-auto p-2" style="background-color: white;border-radius: 15px;" >
+              <img class="h-80 mx-auto" src="{% static 'img/x-vision.png' %}" style="border-radius: 15px;width: 100%;" >
+              <div style='text-align:center'><i class="fas fa-medal" style="color: rgb(0, 132, 255);" ></i> پاناسونیک <i style="color: rgb(0, 132, 255);" class="fas fa-medal"></i></div>
+            </div>
+
+          </a>
+
+        </div>
+
+
+
+        <div class="col-7 col-sm-4 col-md-3 col-lg-2 mt-2 mb-5" style="border-radius: 15px;" style="height: 90%;border-radius: 15px;background-color: white;">
+          <a href="#" style="color:black;text-decoration: none;">
+            <div class="mx-auto p-2" style="background-color: white;border-radius: 15px;" >
+              <img class="h-80 mx-auto" src="{% static 'img/pars.png' %}" style="border-radius: 15px;width: 100%;" >
+              <div style='text-align:center'><i class="fas fa-medal" style="color: rgb(0, 132, 255);" ></i> پاناسونیک <i style="color: rgb(0, 132, 255);" class="fas fa-medal"></i></div>
+            </div>
+
+          </a>
+
+        </div>
+        <div class="col-7 col-sm-4 col-md-3 col-lg-2 mt-2 mb-5" style="border-radius: 15px;" style="height: 90%;border-radius: 15px;background-color: white;">
+          <a href="#" style="color:black;text-decoration: none;">
+            <div class="mx-auto p-2" style="background-color: white;border-radius: 15px;" >
+              <img class="h-80 mx-auto" src="{% static 'img/huawei.jpg' %}"  style="border-radius: 15px;width: 100%;" >
+              <div style='text-align:center'><i class="fas fa-medal" style="color: rgb(0, 132, 255);" ></i> پاناسونیک <i style="color: rgb(0, 132, 255);" class="fas fa-medal"></i></div>
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container-fluid" style="height: 380px;background-color: rgb(112, 112, 112);">
+      <div class="row h-100">
+
+            <div class="col-12 d-flex justify-content-around" style="background-color: rgb(112, 112, 112);">
+              <div class="col-3 sm-col-2 col-lg-1 p-3" style="border-radius: 100px;">
+                <img class="mx-auto" src="{% static 'img/esalat.jpg' %}" style="width: 100%;height: auto; border-radius: 100px;">
+                <div class="mt-2" style="font-size: 10px;text-align: center;color: white;">اصالت کالا</div>
+              </div>
+              <div class="col-3 sm-col-2 col-lg-1 p-3" style="border-radius: 100px;">
+                <img class="mx-auto" src="{% static 'img/24hrs2.jpeg' %}" style="width: 100%;height: auto; border-radius: 100px;">
+                <div class="mt-2" style="font-size: 10px;text-align: center;color: white;">پشتیبانی ۲۴ ساعته</div>
+              </div>
+              <div class="col-3 sm-col-2 col-lg-1 p-3" style="border-radius: 100px;">
+                <img class="mx-auto" src="{% static 'img/money_back.png' %}" style="width: 100%;height: auto; border-radius: 100px;">
+                <div class="mt-2" style="font-size: 10px;text-align: center;color: white;">ضمانت بازگشت وجه</div>
+              </div>
+              <div class="col-3 sm-col-2 col-lg-1 p-3" style="border-radius: 100px;">
+                <img class="mx-auto" src="{% static 'img/pay5.png' %}" style="width: 100%;height: auto; border-radius: 100px;">
+                <div class="mt-2" style="font-size: 10px;text-align: center;color: white;">پرداخت آنلاین</div>
+              </div>
+            </div>
+
+            <div class="col-12 d-flex justify-content-between">
+
+              <div class="col-4 col-lg-3  d-flex flex-column" style="text-align: center;color: white;">
+                  <p style="font-size: 15px;">با سدمد کالا</p>
+                  <a href="#" style="text-decoration: none;color: white; font-size: 12px;">تماس با سدمد کالا</a>
+                  <a href="#" style="text-decoration: none;color: white; font-size: 12px;">درباره سدمد کالا</a>
+                  <a href="#" style="text-decoration: none;color: white; font-size: 12px;">کار در سدمد کالا</a>
+              </div>
+              <div class="col-4 col-lg-3 d-flex flex-column" style="text-align: center;color: white;">
+                <p style="font-size: 15px;">خدمات مشتریان</p>
+                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">پرسش و پاسخ</a>
+                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">شرایط بازگشت وجه</a>
+                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">گزارش تخلف</a>
+              </div>
+              <div class="col-4 col-lg-3  d-flex flex-column" style="text-align: center;color: white;">
+                <p style="font-size: 15px;">راهنمای خرید از سدمد کالا</p>
+                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">نحوه ثبت سفارش</a>
+                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">رویه ارسال سفارش</a>
+                <a href="#" style="text-decoration: none;color: white; font-size: 12px;"> روش های پرداخت</a>
+              </div>
+            </div>
+            <div class="mx-auto pt-2 pb-2" style="text-align: center;color: white;border-top:1px solid black">
+            <p> هفت روز هفته ، ۲۴ ساعت شبانه‌روز پاسخگوی شما هستیم</p>
+            <p>تلفن: ۰۹۳۶۱۲۳۴۵۶۷۸</p>
+            <p class="mb-2">E-mail : puryabzp@gmail.com</p>
+
+            </div>
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}
