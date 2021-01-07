@@ -5,75 +5,7 @@
 {% block body %}
 
 
-      <!-- main -->
-    <nav class="navbar navbar-expand-lg navbar-light nav_bar d-flex justify-content-between" style="position: sticky;position: -webkit-sticky;position: -webkit-sticky;
-    position: sticky;
-    top: 0;z-index: 1;">
 
-      <div>
-        <button class="basket" ><i class="fas fa-shopping-basket"></i></button>
-        <span class="m-2">|</span>
-        <button class="login_btn">ورود به حساب کاربری   <i class="fas fa-user"></i></button></div>
-         <div class="d-flex">
-          <div style="margin-top: 20px;">
-            <form>
-              <button class="search_btn"><i class="fas fa-search " style="color: gray;font-size: 10px;text-align: right;"></i></button>
-              <input type="text" class="search_field" placeholder="... جستجو کن ">
-            </form>
-
-
-          </div>
-          <div class="bg-success m-2">
-
-              <img src="{% static 'img/1597738603766.jpeg' %}" style="height: 50px;width: 50px;">
-        </div>
-      </div>
-    </nav>
-
-
-
-
-
-
-    <div class="row w-100 p-0 m-0 cat_div mr-2 mb-1 d-flex justify-content-around">
-      <div class="dropdown mt-2">
-        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i id="button" class="fa fa-list-alt" aria-hidden="true"></i> دسته بندی ها</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdowns">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
-
-      <div class="dropdown mt-2">
-        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store"></i> فروشگاه ها</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
-
-
-      <div class="dropdown mt-2">
-        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> برندها</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
-
-
-      <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 10px;"><i class="far fa-question-circle"></i> سوالی دارید</button>
-    </div>
-
-
-
-
-
-
-    <!-- first slider -->
     <div class="container mt-2 mb-2 h-100 w-100">
       <div class="row h-100 w-100 p-0 m-0 d-flex justify-content-center">
         <div class="row col-12 col-sm-12 col-md-12 col-lg-5 p-0 m-0">
@@ -698,62 +630,6 @@
       </div>
     </div>
 
-    <div class="container-fluid" style="height: 380px;background-color: rgb(112, 112, 112);">
-      <div class="row h-100">
-
-            <div class="col-12 d-flex justify-content-around" style="background-color: rgb(112, 112, 112);">
-              <div class="col-3 sm-col-2 col-lg-1 p-3" style="border-radius: 100px;">
-                <img class="mx-auto" src="{% static 'img/esalat.jpg' %}" style="width: 100%;height: auto; border-radius: 100px;">
-                <div class="mt-2" style="font-size: 10px;text-align: center;color: white;">اصالت کالا</div>
-              </div>
-              <div class="col-3 sm-col-2 col-lg-1 p-3" style="border-radius: 100px;">
-                <img class="mx-auto" src="{% static 'img/24hrs2.jpeg' %}" style="width: 100%;height: auto; border-radius: 100px;">
-                <div class="mt-2" style="font-size: 10px;text-align: center;color: white;">پشتیبانی ۲۴ ساعته</div>
-              </div>
-              <div class="col-3 sm-col-2 col-lg-1 p-3" style="border-radius: 100px;">
-                <img class="mx-auto" src="{% static 'img/money_back.png' %}" style="width: 100%;height: auto; border-radius: 100px;">
-                <div class="mt-2" style="font-size: 10px;text-align: center;color: white;">ضمانت بازگشت وجه</div>
-              </div>
-              <div class="col-3 sm-col-2 col-lg-1 p-3" style="border-radius: 100px;">
-                <img class="mx-auto" src="{% static 'img/pay5.png' %}" style="width: 100%;height: auto; border-radius: 100px;">
-                <div class="mt-2" style="font-size: 10px;text-align: center;color: white;">پرداخت آنلاین</div>
-              </div>
-            </div>
-
-            <div class="col-12 d-flex justify-content-between">
-
-              <div class="col-4 col-lg-3  d-flex flex-column" style="text-align: center;color: white;">
-                  <p style="font-size: 15px;">با سدمد کالا</p>
-                  <a href="#" style="text-decoration: none;color: white; font-size: 12px;">تماس با سدمد کالا</a>
-                  <a href="#" style="text-decoration: none;color: white; font-size: 12px;">درباره سدمد کالا</a>
-                  <a href="#" style="text-decoration: none;color: white; font-size: 12px;">کار در سدمد کالا</a>
-              </div>
-              <div class="col-4 col-lg-3 d-flex flex-column" style="text-align: center;color: white;">
-                <p style="font-size: 15px;">خدمات مشتریان</p>
-                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">پرسش و پاسخ</a>
-                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">شرایط بازگشت وجه</a>
-                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">گزارش تخلف</a>
-              </div>
-              <div class="col-4 col-lg-3  d-flex flex-column" style="text-align: center;color: white;">
-                <p style="font-size: 15px;">راهنمای خرید از سدمد کالا</p>
-                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">نحوه ثبت سفارش</a>
-                <a href="#" style="text-decoration: none;color: white; font-size: 12px;">رویه ارسال سفارش</a>
-                <a href="#" style="text-decoration: none;color: white; font-size: 12px;"> روش های پرداخت</a>
-              </div>
-            </div>
-            <div class="mx-auto pt-2 pb-2" style="text-align: center;color: white;border-top:1px solid black">
-            <p> هفت روز هفته ، ۲۴ ساعت شبانه‌روز پاسخگوی شما هستیم</p>
-            <p>تلفن: ۰۹۳۶۱۲۳۴۵۶۷۸</p>
-            <p class="mb-2">E-mail : puryabzp@gmail.com</p>
-
-            </div>
-
-
-
-
-
-      </div>
-    </div>
 
 
 
