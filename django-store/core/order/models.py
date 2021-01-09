@@ -112,7 +112,7 @@ class OrderItem(models.Model):
 
     @property
     def get_name(self):
-        return self.order.user.name
+        return self.order.user
 
     @property
     def get_shop_name(self):
