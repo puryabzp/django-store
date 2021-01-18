@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'account.User'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
 
 
 # Application definition
@@ -67,6 +70,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'homepage.context_processors.categories_processor',
+                'homepage.context_processors.brands_processor',
+                'homepage.context_processors.shops_processor',
+                'homepage.context_processors.mobile_processor'
             ],
         },
     },

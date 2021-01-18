@@ -125,7 +125,7 @@ class ShopProduct(models.Model):
                                 on_delete=models.CASCADE)
     created_at = models.DateTimeField(_("Create at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Update at"), auto_now=True)
-    price = models.DecimalField(default=0.00, decimal_places=2, max_digits=100)
+    price = models.DecimalField(default=0.00, decimal_places=0, max_digits=100)
 
     class Meta:
         verbose_name = _("shop_product")
@@ -133,7 +133,7 @@ class ShopProduct(models.Model):
         ordering = ['-created_at']
 
     def __str__(self):
-        return self.shop.name
+        return self.product.title
 
 
 # Create your models here.

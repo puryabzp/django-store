@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 
-{%  block title %}zoomit{% endblock %}
+{%  block title %}SEDMED{% endblock %}
 {% block body %}
 
 
@@ -52,7 +52,7 @@
 {#    </div>#}
     <!-- first slider -->
 
-    <div class="container mt-2 mb-2 h-100 w-100">
+    <div class="container mt-3 mb-3 h-100 w-100">
         <div class="row  p-0 m-0">
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 row p-0 m-0">
                 <a href="#">
@@ -68,24 +68,27 @@
                 </a>
             </div>
             <div id="carouselExampleIndicators" class="carousel slide col-12 col-sm-12 col-md-12 col-lg-8 p-0 m-0 " data-ride="carousel" style="height: 360px;border-radius: 20px;">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                  </ol>
+{#                  <ol class="carousel-indicators">#}
+{#                    <li data-target="#carouselExampleIndicators" data-slide-to="0"></li>#}
+{#                    <li data-target="#carouselExampleIndicators" data-slide-to="1" ></li>#}
+{#                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>#}
+{#                  </ol>#}
                   <div class="carousel-inner p-0 m-0 h-100 w-100">
 
-                    <div class="carousel-item active p-0 m-0 h-100 w-100">
-                        <a href="#">
+{#                    <div class="carousel-item p-0 m-0 h-100 w-100" id="first_carousel">#}
+{#                        <a href="#">#}
+{##}
+{#                             <img class="d-block w-100 h-100" src="{% static 'img/nescafe.jpg' %}"  alt="First slide" style="border-radius: 15px">#}
+{#                        </a>#}
+{#                    </div>#}
 
-                             <img class="d-block w-100 h-100" src="{% static 'img/nescafe.jpg' %}"  alt="First slide" style="border-radius: 15px">
-                        </a>
-                    </div>
+
                    {% for slide in slide_list %}
                         <div class="carousel-item p-0 m-0 h-100 w-100">
                             <a href="#">
 
                                  <img class="d-block w-100 h-100" src="{{slide.image.url}}"  alt="First slide" style="border-radius: 15px">
+
                             </a>
                         </div>
                    {% endfor %}
@@ -100,6 +103,7 @@
                     <span class="sr-only">Next</span>
                   </a>
             </div>
+
           </div>
         </div>
     </div>
@@ -176,63 +180,26 @@
 
         </div> -->
         <div class="col-12 row d-flex justify-content-around">
-          <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 mb-3" style="height: 320px;background-color: white;border-radius: 15px;" >
-
-            <a class="w-100 h-100" href="#" style="color:black;text-decoration: none;">
-              <img src="{% static 'img/sigol.jpg' %}"  style="width: 100%; height: 80%rem;border-radius: 15px;">
-            <div class="mt-3" style="text-align: right;">اسم محصول</div>
-            <div>
-              <span class="badge badge-danger mr-1">%۲۰</span>
-              <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
-            </div>
-            <div><span>۵۵,۰۰۰</span></div>
-            </a>
-
-          </div>
 
 
-          <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 mb-3" style="height: 320px;background-color: white;border-radius: 15px;" >
+        {% for discount in discounts %}
+                      <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 pb-3" style="height: auto;background-color: white;border-radius: 15px;" >
 
-            <a class="w-100 h-100" href="#" style="color:black;text-decoration: none;">
-              <img src="{% static 'img/sigol.jpg' %}" style="width: 100%; height: 80%rem ;border-radius: 15px;">
-            <div class="mt-3" style="text-align: right;">اسم محصول</div>
-            <div>
-              <span class="badge badge-danger mr-1">%۲۰</span>
-              <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
-            </div>
-            <div><span>۵۵,۰۰۰</span></div>
-            </a>
+                        <a class="w-100 h-100 mb-3" href="#" style="color:black;text-decoration: none;">
+                          <img class="mt-3" src="{{ discount.product.product.image.url }}"  style="width: 100%; height: 80%rem;border-radius: 15px;">
+                        <div class="mt-3" style="text-align: right;">{{ discount.product.product.title }}</div>
+                        <div>
+                          <span class="badge badge-danger mr-1">%{{discount.discount}}</span>
+                          <span style="color: grey;text-decoration: line-through;">{{ discount.product.price }}</span>
+                        </div>
+                        <div dir="rtl"><span>{{discount.final_pay}} تومان</span></div>
+                        <div style="text-align: right;font-size: 12px;font-weight: bold;color: red" dir="rtl"><span>تعداد موجود در انبار : {{ discount.product.number_in_stock }}</span></div>
+                        </a>
 
-          </div>
-
-          <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 mb-3" style="height: 320px;background-color: white;border-radius: 15px;" >
-
-            <a class="w-100 h-100" href="#" style="color:black;text-decoration: none;">
-              <img src="{% static 'img/sigol.jpg' %}"  style="width: 100%; height: 80%rem;border-radius: 15px;">
-            <div class="mt-3" style="text-align: right;">اسم محصول</div>
-            <div>
-              <span class="badge badge-danger mr-1">%۲۰</span>
-              <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
-            </div>
-            <div><span>۵۵,۰۰۰</span></div>
-            </a>
-
-          </div>
+                      </div>
+        {% endfor %}
 
 
-          <div class="col-6 col-sm-4 col-md-2 col-lg-2 mt-2 mb-3" style="height: 320px;background-color: white;border-radius: 15px;" >
-
-            <a class="w-100 h-100" href="#" style="color:black;text-decoration: none;">
-              <img src="{% static 'img/sigol.jpg' %}"  style="width: 100%; height: 80%rem;border-radius: 15px;">
-            <div class="mt-3" style="text-align: right;">اسم محصول</div>
-            <div>
-              <span class="badge badge-danger mr-1">%۲۰</span>
-              <span style="color: grey;text-decoration: line-through;">۸۵,۰۰۰</span>
-            </div>
-            <div><span>۵۵,۰۰۰</span></div>
-            </a>
-
-          </div>
 
 
 
@@ -259,42 +226,18 @@
               <div class="carousel-item active">
                 <div class="row w-100 p-0 m-0 d-flex justify-content-around">
 
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                {% for mobile in mobiles|slice:"0:4"%}
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-3" style="height: auto;">
                     <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">{{ mobile.product.title}}</div>
                         <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;"dir="rtl">{{mobile.price}} تومان</div>
                     </a>
                   </div>
+                {% endfor %}
 
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
 
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
                 </div>
 
               </div>
@@ -304,43 +247,16 @@
 
                 <div class="row w-100 p-0 m-0 d-flex justify-content-around">
 
-
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
+                {% for mobile in mobiles|slice:"4:8"%}
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-3" style="height: auto;">
                     <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
+                        <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 133px;height: 133px;">
+                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">{{ mobile.product.title}}</div>
                         <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;"dir="rtl">{{mobile.price}} تومان</div>
                     </a>
                   </div>
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
+                {% endfor %}
 
 
 
@@ -354,42 +270,17 @@
                 <div class="row w-100 p-0 m-0 d-flex justify-content-around">
 
 
+                {% for mobile in mobiles|slice:"8:12"%}
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-3" style="height: auto;">
+                        <a href="#" style="text-decoration: none">
+                            <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 133px;height: 133px;">
+                            <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">{{ mobile.product.title}}</div>
+                            <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
+                            <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;"dir="rtl">{{mobile.price}} تومان</div>
+                        </a>
+                    </div>
+                {% endfor %}
 
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
-
-                  <div class="col-6 col-sm-4 col-md-4 col-lg-2" style="height: 220px;">
-                    <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{% static 'img/mobile.jpg' %}" style="width: 133px;height: 133px;">
-                        <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">گوشی شیاعومی</div>
-                        <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;">۱۵۰,۰۰۰</div>
-                    </a>
-                  </div>
 
                 </div>
 
@@ -635,8 +526,8 @@
             <div class="col-7 col-sm-4 col-md-3 col-lg-2 mt-2 mb-5" style="border-radius: 15px;" style="height: 90%;border-radius: 15px;background-color: white;">
           <a href="#" style="color:black;text-decoration: none;">
             <div class="mx-auto p-2" style="background-color: white;border-radius: 15px;" >
-              <img class="h-80 mx-auto" src="{{brand.image.url}}"  style="border-radius: 15px;width: 100%;" >
-              <div style='text-align:center'><i class="fas fa-medal" style="color: rgb(0, 132, 255);" ></i> {{ brand.title }} <i style="color: rgb(0, 132, 255);" class="fas fa-medal"></i></div>
+              <img class="h-80 mx-auto" src="{{brand.brand.image.url}}"  style="border-radius: 15px;width: 100%;" >
+              <div class="mt-2" style='text-align:center'><i class="fas fa-medal" style="color: rgb(0, 132, 255);" ></i> {{ brand.title }} <i style="color: rgb(0, 132, 255);" class="fas fa-medal"></i></div>
             </div>
 
           </a>
@@ -654,6 +545,12 @@
 
 
 
-
-
+{% endblock %}
+{% block javascript %}
+<script>
+$(document).ready(function () {
+  $('.carousel-inner').find('.carousel-item').first().addClass('active');
+  {#$('div').hasClass('carousel-item').fi.addClass('active');#}
+});
+</script>
 {% endblock %}

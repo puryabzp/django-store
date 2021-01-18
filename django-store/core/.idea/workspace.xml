@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="341fcd1a-3ac9-4d93-84ed-2a81fe183b31" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/homepage/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/homepage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/homepage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/homepage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/homepage/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/order/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/homepage/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage/home_page.html" afterDir="false" />
     </list>
@@ -25,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="HTML File" />
         <option value="Python Script" />
       </list>
@@ -45,9 +49,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/git-weblog/zoomit" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -101,6 +105,35 @@
       <workItem from="1610049277566" duration="3824000" />
       <workItem from="1610053121892" duration="2034000" />
       <workItem from="1610183722946" duration="8786000" />
+      <workItem from="1610192911330" duration="741000" />
+      <workItem from="1610219544854" duration="1344000" />
+      <workItem from="1610232470591" duration="21000" />
+      <workItem from="1610383233441" duration="41000" />
+      <workItem from="1610470854133" duration="727000" />
+      <workItem from="1610471628657" duration="101000" />
+      <workItem from="1610554859555" duration="7449000" />
+      <workItem from="1610688945714" duration="341000" />
+      <workItem from="1610735925415" duration="7558000" />
+      <workItem from="1610781070806" duration="2211000" />
+      <workItem from="1610792937758" duration="13782000" />
+      <workItem from="1610873584821" duration="4394000" />
+      <workItem from="1610908595552" duration="12563000" />
+      <workItem from="1610960885133" duration="367000" />
+      <workItem from="1610961335917" duration="36000" />
+      <workItem from="1610961673522" duration="46000" />
+      <workItem from="1610961772030" duration="79000" />
+      <workItem from="1610961864835" duration="75000" />
+      <workItem from="1610961979366" duration="18000" />
+      <workItem from="1610962300842" duration="32000" />
+      <workItem from="1610962399725" duration="54000" />
+      <workItem from="1610962690840" duration="15000" />
+      <workItem from="1610962764754" duration="43000" />
+      <workItem from="1610962820798" duration="114000" />
+      <workItem from="1610963172352" duration="33000" />
+      <workItem from="1610963561502" duration="176000" />
+      <workItem from="1610963758638" duration="60000" />
+      <workItem from="1610963836880" duration="115000" />
+      <workItem from="1610963974144" duration="7652000" />
     </task>
     <servers />
   </component>

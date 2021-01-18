@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.shortcuts import render
+from django.views.generic import TemplateView, ListView
+
+from .models import SlideShow,BestBrand,ExceptionalDiscounts
+from store.models import Product
 # Create your views here.
 
 
 def slide_view(request):
-    return render(request,'homepage/home_page.html',context={})
-
-from django.shortcuts import render
-from django.views.generic import TemplateView
-
-from .models import SlideShow,BestBrand
+    return render(request, 'homepage/home_page.html', context={})
 
 
 class HomeView(TemplateView):
@@ -19,12 +19,16 @@ class HomeView(TemplateView):
         context = super(HomeView, self).get_context_data()
         context['slide_list'] = SlideShow.objects.all()
         context['best_brands']=BestBrand.objects.all()
+        context['discounts']=ExceptionalDiscounts.objects.all()
         return context
 
 
-
-
-
-# def Home_view(request):
-#     slides = SlideShow.objects.all()
-#     return render(request, 'homepage/home_page.html', context={'slides': slides})
+# class MobileSlider(TemplateView):
+#     model = Product
+#     template_name = 'homepage/home_page.html'
+#
+#     def get_context_data(self, *, object_list=None, **kwargs):
+#         context = super(MobileSlider, self).get_context_data()
+#         context['mobiles'] = Product.objects.filter(category__category_name='mobile')
+#         print(context['mobiles'])
+#         return context

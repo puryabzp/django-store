@@ -8,7 +8,14 @@
       <div>
         <button class="basket" ><i class="fas fa-shopping-basket"></i></button>
         <span class="m-2">|</span>
-        <button class="login_btn">ورود به حساب کاربری   <i class="fas fa-user"></i></button></div>
+          {% if user.is_authenticated %}
+
+              <button class="login_btn"><a href="{% url 'logout' %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold">خروج از حساب کاربری</a> <i class="fas fa-user"></i></button>
+          {% else %}
+              <button class="login_btn"><a href="{% url 'login' %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold">ورود به حساب کاربری</a> <i class="fas fa-user"></i></button>
+          {% endif %}
+
+      </div>
          <div class="d-flex">
           <div style="margin-top: 20px;">
             <form>
@@ -17,9 +24,9 @@
             </form>
 
           </div>
-          <div class="bg-success m-2">
+          <div class="m-2">
 
-              <img src="{% static 'img/1597738603766.jpeg' %}" style="height: 50px;width: 50px;">
+              <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/3957.png" style="height: 50px;width: 50px;">
         </div>
       </div>
     </nav>
@@ -33,18 +40,18 @@
       <div class="dropdown mt-2">
         <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i id="button" class="fa fa-list-alt" aria-hidden="true"></i> دسته بندی ها</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdowns">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+            {% for category in categories %}
+                 <a class="dropdown-item" href="#">{{ category.category_name }}</a>
+            {% endfor %}
         </div>
       </div>
 
       <div class="dropdown mt-2">
         <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store"></i> فروشگاه ها</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          {% for shop in shops %}
+                 <a class="dropdown-item" href="#">{{ shop.name }}</a>
+            {% endfor %}
         </div>
       </div>
 
@@ -52,9 +59,9 @@
       <div class="dropdown mt-2">
         <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> برندها</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          {% for brand in brands %}
+                 <a class="dropdown-item" href="#">{{ brand.brand_name }}</a>
+            {% endfor %}
         </div>
       </div>
 
