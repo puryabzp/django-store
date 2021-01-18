@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView
 
-from .models import Product,ShopProduct
+from .models import Product,ShopProduct,ProductsImage,ProductMeta,Comment
 # Create your views here.
 
 
@@ -33,6 +33,15 @@ class ProductsOfShop(ListView):
         return HttpResponse(shop_products)
 
 
+class ProductDetails(DetailView):
+    model = Product
 
+    def get_context_data(self, **kwargs):
+        context = super(ProductDetails, self).get_context_data()
+        context['shop_products'] = ShopProduct.objects.filter(product=context['object'])
+        context['product_images'] = ProductsImage.objects.filter(product=context['object'])
+        context['product_meta'] = ProductMeta.objects.filter(product=context['object'])
+        context['product_comments'] = Comment.objects.filter(product=context['object'])
+        return context
 
 
