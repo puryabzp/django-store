@@ -229,10 +229,10 @@
                 {% for mobile in mobiles|slice:"0:4"%}
                     <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-3" style="height: auto;">
                     <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 133px;height: 133px;">
+                        <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 100%;height: auto;">
                         <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">{{ mobile.product.title}}</div>
                         <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
-                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;"dir="rtl">{{mobile.price}} تومان</div>
+                        <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;"dir="rtl">{{mobile.price|floatformat:'1'}} تومان</div>
                     </a>
                   </div>
                 {% endfor %}
@@ -250,7 +250,7 @@
                 {% for mobile in mobiles|slice:"4:8"%}
                     <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-3" style="height: auto;">
                     <a href="#" style="text-decoration: none">
-                        <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 133px;height: 133px;">
+                        <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 100%;height: auto;">
                         <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">{{ mobile.product.title}}</div>
                         <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
                         <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;"dir="rtl">{{mobile.price}} تومان</div>
@@ -273,7 +273,7 @@
                 {% for mobile in mobiles|slice:"8:12"%}
                     <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-3" style="height: auto;">
                         <a href="#" style="text-decoration: none">
-                            <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 133px;height: 133px;">
+                            <img class="mx-auto mt-4 w-100" src="{{ mobile.product.image.url }}" style="width: 100%;height: auto;">
                             <div class="mx-auto w-100" style="text-align: center;color: gray;text-decoration: none;font-size: 10px;">{{ mobile.product.title}}</div>
                             <div><span class="badge badge-danger mr-1">%۲۰</span><span style="text-decoration: line-through;color: gray;">۱۲,۰۰۰</span></div>
                             <div class="mx-auto w-100" style="text-align: left;color:black;text-decoration: none;font-size: 15px;"dir="rtl">{{mobile.price}} تومان</div>

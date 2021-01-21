@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import ListView,DetailView
+from .filters import MostExpensivePrice
 
 from .models import Product,ShopProduct,ProductsImage,ProductMeta,Comment
 # Create your views here.
@@ -43,5 +44,10 @@ class ProductDetails(DetailView):
         context['product_meta'] = ProductMeta.objects.filter(product=context['object'])
         context['product_comments'] = Comment.objects.filter(product=context['object'])
         return context
+
+
+def product_list(request):
+    f = MostExpensivePrice(request.GET, queryset=Product.objects.all())
+    return render(request, 'homepage/products.html', {'filter': f})
 
 

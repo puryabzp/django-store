@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/store/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/store/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homepage/home_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage/home_page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +20,8 @@
       <list>
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -38,7 +38,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/git-weblog/zoomit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="preferences.updates" />
   </component>
@@ -124,6 +124,10 @@
       <workItem from="1610963836880" duration="115000" />
       <workItem from="1610963974144" duration="8392000" />
       <workItem from="1611008013234" duration="4055000" />
+      <workItem from="1611039681760" duration="1832000" />
+      <workItem from="1611073497192" duration="1611000" />
+      <workItem from="1611159401829" duration="69000" />
+      <workItem from="1611173584016" duration="966000" />
     </task>
     <servers />
   </component>
