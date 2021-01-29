@@ -142,7 +142,7 @@ class ProductMeta(models.Model):
                                 on_delete=models.CASCADE)
     created_at = models.DateTimeField(_("Create at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Update at"), auto_now=True)
-    label = models.CharField(_('brand_name'), max_length=150)
+    label = models.CharField(_('label'), max_length=150)
     property = models.TextField(_('property'))
 
     class Meta:
