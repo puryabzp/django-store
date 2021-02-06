@@ -26,7 +26,7 @@ class SignInForm(AuthenticationForm):
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
-        if len(username)>20:
+        if len(username)>40:
             raise ValidationError(_('طول ایمیل بیش از حد متعارف میباشد!'))
         try:
             User.objects.get(email=username)
@@ -38,6 +38,7 @@ class SignInForm(AuthenticationForm):
 class RegisterForm(forms.ModelForm):
     password2 = forms.CharField(label=_('تایید پسوورد'), required=True)
 
+
     class Meta:
         model = User
         fields = ('email', 'first_name', 'last_name', 'melli_code', 'password2', 'password')
@@ -47,11 +48,11 @@ class RegisterForm(forms.ModelForm):
                    'last_name': forms.TextInput, 'password': forms.PasswordInput,
                    'melli_code': forms.TextInput}
 
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-        password2 = self.cleaned_data.get("password2")
-        if password != password2:
-            raise ValidationError(_('رمز عبور و تایید رمز عبور مغایر هستند!'))
+    # def clean_password(self):
+    #     password = self.cleaned_data.get('password')
+    #     password2 = self.cleaned_data.get("password2")
+    #     if password != password2:
+    #         raise ValidationError(_('رمز عبور و تایید رمز عبور مغایر هستند!'))
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

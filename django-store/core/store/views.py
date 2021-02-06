@@ -50,7 +50,7 @@ class ProductDetails(DetailView):
         context['product_images'] = ProductsImage.objects.filter(product=context['object'])
         context['product_meta'] = ProductMeta.objects.filter(product=context['object'])
         context['product_comments'] = Comment.objects.filter(product=context['object'])
-        print(context)
+        # print(context)
         return context
 
 
@@ -75,4 +75,7 @@ def create_comment(request):
                 'create_at': str(comment.create_at), 'comment_count': comment_count, 'comment_id': comment.id}
 
     return HttpResponse(json.dumps(resopnse), status=201)
+
+
+
 

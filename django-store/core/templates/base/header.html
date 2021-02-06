@@ -6,7 +6,34 @@
     top: 0;z-index: 1;">
 
       <div>
-        <button class="basket" ><i class="fas fa-shopping-basket"></i></button>
+{#      <form method="post" action="{% url "create_basket" %}" style="display: inline">#}
+{#          {% csrf_token %}#}
+{#          <input type="hidden" value="{{ user.email }}" name="user">#}
+{#          {% if basket %}#}
+{#               <button class="basket" type="submit" ><i class="fas fa-shopping-basket" style="color: crimson"></i></button>#}
+{#           {% else %}#}
+{#              <button class="basket" type="submit" ><i class="fas fa-shopping-basket"></i></button>#}
+{#          {% endif %}#}
+{##}
+{#      </form>#}
+
+          <div class="dropdown" style="display: inline">
+                <button class="basket btn buttons dropdown-toggle mt-3 mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="create_basket()" style="font-size: 15px" ><i class="fas fa-shopping-basket"></i></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="sabad" style="height: auto; width: 330px">
+                    <button class="btn btn-primary ml-4" onclick="delete_basket()" style="font-size: 10px">حذف سبد خرید</button>
+                    {% for basket_item in basket_items %}
+                        <div style="text-align: center">
+                        <span class="ml-2 mr-2">{{ basket_item.shop_product.product.title }}</span>
+                        <span>{{ basket_item.price }}</span>
+                        <span>{{ basket_item.count }}</span>
+                        <img src="{{ basket_item.shop_product.product.image.url }}" style="width: 70px;height: 70px">
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+          </div>
+
         <span class="m-2">|</span>
           {% if user.is_authenticated %}
 
@@ -72,3 +99,51 @@
 
       <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 10px;"><i class="far fa-question-circle"></i> سوالی دارید</button>
     </div>
+
+{% block javascript %}
+<script>
+    function create_basket() {
+             $.ajax({
+                    type: 'post',
+                    data:{'user':''},
+                    url: "{% url 'create_basket' %}",
+                    success: function (response) {
+
+                        const data = JSON.parse(response)
+                        console.log(data)
+
+
+
+                    }
+                });
+        }
+
+
+
+
+
+
+    function delete_basket() {
+         $.ajax({
+                type: 'post',
+                data:{'user':''},
+                url: "{% url 'delete_basket' %}",
+                success: function (response) {
+                    console.log(response)
+
+
+                }
+            });
+    }
+
+
+</script>
+{% endblock %}
+
+
+
+
+{#                        var i;#}
+{#                        for (i = 0; i < data.length; i++) {#}
+{#                            $("#sabad").prepend(`<span>yesss</span>`)#}
+{#                        }#}

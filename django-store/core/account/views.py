@@ -29,7 +29,7 @@ class Register(CreateView, ModelFormMixin):
             user.set_password(user.password)
             user.save()
             return redirect('login')
-        return render(request, 'homepage/register_form.html', context={'form':form})
+        return render(request, 'homepage/register_form.html', context={'form': form})
 
 
 class UserDetail(BaseDetailView):

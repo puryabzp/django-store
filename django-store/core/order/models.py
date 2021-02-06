@@ -14,6 +14,9 @@ class Basket(models.Model):
     create_at = models.DateTimeField(_('Create at'), auto_now_add=True)
     update_at = models.DateTimeField(_('Update at'), auto_now=True)
 
+    def __str__(self):
+        return self.user.email
+
     @property
     def total_price(self):
         t_price = 0
@@ -39,11 +42,11 @@ class Basket(models.Model):
 
 
 class BasketItem(models.Model):
-    shop_product = models.ForeignKey(ShopProduct, verbose_name=_('Shop product'), on_delete=models.CASCADE)
+    shop_product = models.OneToOneField(ShopProduct, verbose_name=_('Shop product'), on_delete=models.CASCADE)
     basket = models.ForeignKey(Basket, verbose_name=_('Basket'), on_delete=models.CASCADE, related_name='basket_item',
                                related_query_name='basket_item')
-    count = models.PositiveIntegerField(_('Count'))
-    price = models.PositiveIntegerField(_('Price'))
+    count = models.PositiveIntegerField(_('Count'),null=True,default=0)
+    price = models.PositiveIntegerField(_('Price'),null=True,default=0)
 
     def set_price(self):
         self.price = self.shop_product.price
