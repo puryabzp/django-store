@@ -3,8 +3,17 @@ from account.models import Shop
 
 
 def categories_processor(request):
-    categories = Category.objects.all()
-    return {'categories': categories}
+    categories = Category.objects.filter(parent__isnull=True)
+    childs = Category.objects.filter(parent__isnull=False)
+
+    return {'categories': categories,'childs':childs}
+
+
+
+# def child_proccessor(request):
+#
+#     child_category= Category.objects.all()
+#     return {'childs' :child_category}
 
 
 def brands_processor(request):

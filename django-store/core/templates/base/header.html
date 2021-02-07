@@ -19,16 +19,45 @@
 
           <div class="dropdown" style="display: inline">
                 <button class="basket btn buttons dropdown-toggle mt-3 mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="create_basket()" style="font-size: 15px" ><i class="fas fa-shopping-basket"></i></button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="sabad" style="height: auto; width: 330px">
-                    <button class="btn btn-primary ml-4" onclick="delete_basket()" style="font-size: 10px">حذف سبد خرید</button>
-                    {% for basket_item in basket_items %}
-                        <div style="text-align: center">
-                        <span class="ml-2 mr-2">{{ basket_item.shop_product.product.title }}</span>
-                        <span>{{ basket_item.price }}</span>
-                        <span>{{ basket_item.count }}</span>
-                        <img src="{{ basket_item.shop_product.product.image.url }}" style="width: 70px;height: 70px">
-                        </div>
-                    {% endfor %}
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="sabad" style="height: auto; width: 500px">
+                    <button class="btn btn-primary ml-5 mb-1" onclick="delete_basket({{ user.user_baskets.id }})" style="font-size: 10px;">حذف سبد خرید</button>
+
+                    <div style="font-size: 12px;width: 100%;height: auto" dir="rtl">
+
+                        <table class="table" id="basket_list" style="text-align: center">
+                            <thead>
+                              <tr>
+                                <th scope="col">تصویر</th>
+                                <th scope="col">محصول</th>
+                                <th scope="col">قیمت</th>
+                                <th scope="col">تعداد</th>
+                              </tr>
+                            </thead>
+                            <button id="hide_button" onclick="test({{ user.user_baskets.id }})" hidden>dsdsd</button>
+                            <tbody id="simon">
+
+                            {% for basket_item in basket_items %}
+                                {% if basket_item.basket.user ==  user  %}
+                                         <tr>
+                                            <td><img src="{{ basket_item.shop_product.product.image.url }}" style="width: 30px;height: 30px"></td>
+                                            <td>{{ basket_item.shop_product.product.title }}</td>
+                                            <td id="d{{ basket_item.id }}">{{basket_item.shop_product.price}}</td>
+                                            <td>
+                                                <button class="btn" style="border: none;background-color: transparent" onclick="plus_item({{ basket_item.id }})"><i class="fas fa-plus" style="color: green"></i></button>
+                                                <span class="ml-1 mr-1 teo" id="{{ basket_item.id }}">{{ basket_item.count }}</span>
+                                                <button class="btn" style="border: none;background-color: transparent" onclick="minus_item({{ basket_item.id }})"><i class="fas fa-minus" style="color: red"></i></button>
+
+                                            </td>
+                                         </tr>
+                                {% endif %}
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
 
 
                 </div>
@@ -45,9 +74,10 @@
       </div>
          <div class="d-flex">
           <div style="margin-top: 20px;">
-            <form>
+            <form action="{% url 'search' %}" method="post">
+             {% csrf_token %}
               <button class="search_btn"><i class="fas fa-search " style="color: gray;font-size: 10px;text-align: right;"></i></button>
-              <input type="text" class="search_field" placeholder="... جستجو کن ">
+              <input type="text" class="search_field" placeholder="... جستجو کن " name="search">
             </form>
 
           </div>
@@ -69,11 +99,24 @@
       <div class="dropdown mt-2">
         <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i id="button" class="fa fa-list-alt" aria-hidden="true"></i> دسته بندی ها</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdowns">
-            {% for category in categories %}
-                 <a class="dropdown-item" href="{% url 'categories_product' category.slug%}" style="font-weight: bold">{{ category.category_name }}</a>
+                <div style="text-align: center">
+                    <dl>
+                        {% for category in categories %}
+                            <dt><a class="dropdown-item" href="{% url 'categories_product' category.slug%}" style="font-weight: bold">{{ category.category_name }}</a></dt>
+                            {% for child in childs %}
+                               {% if child.parent == category %}
+                                 <dd style="list-style-type:disc"><a class="dropdown-item" href="{% url 'categories_product' child.slug%}" style="font-weight: bold">{{ child.category_name }}</a></dd>
+                               {% endif %}
+                            {% endfor %}
 
-{#                 <a class="dropdown-item" href="#">{{ category.category_name }}</a>#}
-            {% endfor %}
+
+                        {% endfor %}
+
+                    </dl>
+
+
+
+                </div>
         </div>
       </div>
 
@@ -124,6 +167,7 @@
 
 
     function delete_basket() {
+        $("#basket_list tbody").remove();
          $.ajax({
                 type: 'post',
                 data:{'user':''},
@@ -135,6 +179,51 @@
                 }
             });
     }
+
+
+    function plus_item(basket_item_id){
+        const data = JSON.stringify({basket_item_id: basket_item_id})
+
+        $.ajax({
+                type: 'post',
+                url: "{% url 'plus_basket_item' %}",
+                data: data,
+                success: function (response) {
+                    console.log(response)
+                    const data = JSON.parse(response)
+                    var plus = '#' + data['basket_item_id']
+                    var price = '#d'+data['basket_item_id']
+                    $(plus).text(data['basket_item_count'])
+                    $(price).text(data['price'])
+
+
+                }
+            });
+
+    }
+
+
+
+    function minus_item(basket_item_id){
+        const data = JSON.stringify({basket_item_id: basket_item_id})
+
+        $.ajax({
+                type: 'post',
+                url: "{% url 'minus_basket_item' %}",
+                data: data,
+                success: function (response) {
+                    console.log(response)
+                    const data = JSON.parse(response)
+                     var minus = '#' + data['basket_item_id']
+                     var price = '#d'+data['basket_item_id']
+                     $(minus).text(data['basket_item_count'])
+                     $(price).text(data['price'])
+
+                }
+            });
+
+    }
+
 
 
 </script>

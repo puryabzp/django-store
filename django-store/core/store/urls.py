@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.urls import path,include
-from .views import ProductsOfCategory,ProductsOfBrand,ProductsOfShop,ProductDetails,product_list,create_comment
+from .views import ProductsOfCategory,ProductsOfBrand,ProductsOfShop,ProductDetails,product_list,create_comment,SearchField
 
 urlpatterns = [
                   path('categories/<slug:slug>/', ProductsOfCategory.as_view(), name='categories_product'),
@@ -9,5 +9,6 @@ urlpatterns = [
                   path('products/<slug:slug>/', ProductDetails.as_view(), name='product_details'),
                   url(r'^list$', product_list),
                   path('comment/', create_comment, name='comment_create'),
+                  path('search/', SearchField.as_view(), name='search'),
 
               ]

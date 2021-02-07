@@ -1,10 +1,11 @@
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
+
 from store.models import ShopProduct
 from .models import Basket,BasketItem
 
 
 def basket_items_proccessor(request):
-    try:
-        basket_items= BasketItem.objects.filter(basket__user=request.user)
-        return {'basket_items':basket_items}
-    except BasketItem.DoesNotExist:
-        pass
+
+            basket_items= BasketItem.objects.all
+            return {'basket_items':basket_items}

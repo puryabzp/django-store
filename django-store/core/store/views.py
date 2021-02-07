@@ -1,5 +1,5 @@
 import json
-
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
@@ -77,5 +77,19 @@ def create_comment(request):
     return HttpResponse(json.dumps(resopnse), status=201)
 
 
+class SearchField(ListView):
+    template_name = 'base/header.html'
+    paginate_by = 1
+    model = Product
 
+    def post(self, request, *args, **kwargs):
+        search = request.POST['search']
+        print(search)
+        if not search:
+            return render(request, 'homepage/empty_search.html', {})
+        search_products = ShopProduct.objects.filter(Q(product__title__icontains=search) | Q(product__category__category_name__icontains=search))
+        result = tuple(search_products)
+        if not search_products:
+            return render(request, 'homepage/not_found.html', {})
+        return render(request, 'homepage/products.html', context={'search_products': result})
 

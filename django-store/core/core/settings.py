@@ -74,7 +74,8 @@ TEMPLATES = [
                 'homepage.context_processors.brands_processor',
                 'homepage.context_processors.shops_processor',
                 'homepage.context_processors.mobile_processor',
-                'order.context_processors.basket_items_proccessor'
+                'order.context_processors.basket_items_proccessor',
+                # 'homepage.context_processors.child_proccessor'
 
             ],
         },

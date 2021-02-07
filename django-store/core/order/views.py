@@ -25,13 +25,13 @@ from .models import Basket,BasketItem
 #     def get_template_names(self):
 #
 #         return ['%s.html' % self.kwargs['template']]
-# @csrf_exempt
-# def create_basket(request):
-#     user = request.user
-#     basket = Basket.objects.create(user=user)
-#     resopnse = {"basket":basket.user.email}
-#
-#     return HttpResponse(json.dumps(resopnse), status=201)
+@csrf_exempt
+def create_basket(request):
+    user = request.user
+    basket = Basket.objects.create(user=user)
+    resopnse = {"basket":basket.user.email}
+
+    return HttpResponse(json.dumps(resopnse), status=201)
 
 @csrf_exempt
 def delete_basket(request):
@@ -42,14 +42,7 @@ def delete_basket(request):
     return HttpResponse(json.dumps(resopnse), status=201)
 
 
-# @csrf_exempt
-# def add_to_basket(request):
-#     data = json.loads(request.body)
-#     shop_product = data['shop_product']
-#     basket = data['basket_user']
-#     basket_item = BasketItem.objects.create(basket_id=basket, shop_product_id=shop_product)
 
-#
 
 
 @csrf_exempt
@@ -63,11 +56,12 @@ def add_to_basket(request):
 
     data = json.loads(request.body)
     basket = user.user_baskets
-    print(basket)
     shop_product = data['shop_product']
     basket_item = BasketItem.objects.create(basket_id=basket.id, shop_product_id=shop_product)
     resopnse = {"basket_item":basket_item.shop_product.product.title}
     return HttpResponse(resopnse, status=201)
+
+
 
 
 @csrf_exempt
@@ -77,3 +71,37 @@ def create_basket(request):
     items =  serializers.serialize('json', BasketItem.objects.filter(basket_id=basket))
     return HttpResponse(items, status=201)
 
+
+@csrf_exempt
+def plus_basket_item(request):
+    data = json.loads(request.body)
+    basket_item_id = data['basket_item_id']
+    basket_item =BasketItem.objects.get(id=basket_item_id)
+    basket_item.count+=1
+    basket_item.save()
+    price = basket_item.count * basket_item.shop_product.price
+    response = {"basket_item_count":basket_item.count,'basket_item_id':basket_item.id,'price':str(price)}
+    # print(response)
+    return HttpResponse(json.dumps(response), status=201)
+
+
+@csrf_exempt
+def minus_basket_item(request):
+    data = json.loads(request.body)
+    basket_item_id = data['basket_item_id']
+    basket_item =BasketItem.objects.get(id=basket_item_id)
+    if basket_item.count>0:
+        basket_item.count-=1
+        basket_item.save()
+        price = basket_item.count*basket_item.shop_product.price
+    response = {"basket_item_count":basket_item.count,'basket_item_id':basket_item.id,'price':str(price)}
+    # print(response)
+    return HttpResponse(json.dumps(response), status=201)
+
+# @csrf_exempt
+# def user_items_basket(request):
+#     data = json.loads(request.body)
+#     basket_id = data['basket_id']
+#     basket_items =  serializers.serialize('json', BasketItem.objects.filter(basket_id=basket_id))
+#     print(basket_items)
+#     return HttpResponse(basket_items, status=201)
