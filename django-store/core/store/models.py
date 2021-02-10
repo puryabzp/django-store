@@ -65,6 +65,11 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def like_count(self):
+        q = Like.objects.filter(product=self, like=True)
+        return q.count()
+
 
 class ProductsImage(models.Model):
     name = models.CharField(_('name'), max_length=255)
@@ -158,6 +163,13 @@ class Like(models.Model):
     user = models.ForeignKey(User, verbose_name=_('User'), on_delete=models.CASCADE)
     product = models.ForeignKey(Product, verbose_name=_('Product'), on_delete=models.CASCADE,
                                 related_name='product_like', related_query_name='product_like')
-    condition = models.BooleanField('Condition')
+    like = models.BooleanField(_('Condition'),default=True)
     create_at = models.DateTimeField(_("Create at"), auto_now_add=True)
     update_at = models.DateTimeField(_("Update at"), auto_now=True)
+
+    class Meta:
+        verbose_name = _("like")
+        verbose_name_plural = _("likes")
+        unique_together = [['user', 'product']]
+        ordering = ['-create_at']
+

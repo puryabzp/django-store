@@ -82,6 +82,7 @@ packaging==20.4
 pandocfilters==1.4.2
 paramiko==2.6.0
 parso==0.7.1
+pbr==5.5.1
 pexpect==4.6.0
 pickleshare==0.7.5
 Pillow==8.0.1
@@ -130,6 +131,7 @@ sqlparse==0.4.1
 systemd-python==234
 terminado==0.9.1
 testpath==0.4.4
+testresources==2.0.1
 toml==0.10.1
 tornado==6.0.4
 traitlets==5.0.4

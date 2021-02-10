@@ -9,5 +9,6 @@ admin.site.register(Cart)
 admin.site.register(Shop)
 admin.site.register(ShopProduct)
 admin.site.register(ProductMeta)
+admin.site.register(Like)
 
 # Register your models here.

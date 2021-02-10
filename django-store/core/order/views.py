@@ -58,6 +58,8 @@ def add_to_basket(request):
     basket = user.user_baskets
     shop_product = data['shop_product']
     basket_item = BasketItem.objects.create(basket_id=basket.id, shop_product_id=shop_product)
+    basket_item.count+=1
+    basket_item.save()
     resopnse = {"basket_item":basket_item.shop_product.product.title}
     return HttpResponse(resopnse, status=201)
 

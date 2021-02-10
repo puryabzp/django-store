@@ -6,21 +6,11 @@
     top: 0;z-index: 1;">
 
       <div>
-{#      <form method="post" action="{% url "create_basket" %}" style="display: inline">#}
-{#          {% csrf_token %}#}
-{#          <input type="hidden" value="{{ user.email }}" name="user">#}
-{#          {% if basket %}#}
-{#               <button class="basket" type="submit" ><i class="fas fa-shopping-basket" style="color: crimson"></i></button>#}
-{#           {% else %}#}
-{#              <button class="basket" type="submit" ><i class="fas fa-shopping-basket"></i></button>#}
-{#          {% endif %}#}
-{##}
-{#      </form>#}
 
-          <div class="dropdown" style="display: inline">
+          <div class="dropdown" style="display: inline;">
                 <button class="basket btn buttons dropdown-toggle mt-3 mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="create_basket()" style="font-size: 15px" ><i class="fas fa-shopping-basket"></i></button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="sabad" style="height: auto; width: 500px">
-                    <button class="btn btn-primary ml-5 mb-1" onclick="delete_basket({{ user.user_baskets.id }})" style="font-size: 10px;">حذف سبد خرید</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="sabad" style="height: auto; width: 400px">
+                    <button class="btn btn-primary ml-5 mb-1" onclick="delete_basket({{ user.user_baskets.id }})" style="font-size: 13px;width: 30%">حذف سبد خرید</button>
 
                     <div style="font-size: 12px;width: 100%;height: auto" dir="rtl">
 
@@ -76,8 +66,8 @@
           <div style="margin-top: 20px;">
             <form action="{% url 'search' %}" method="post">
              {% csrf_token %}
-              <button class="search_btn"><i class="fas fa-search " style="color: gray;font-size: 10px;text-align: right;"></i></button>
-              <input type="text" class="search_field" placeholder="... جستجو کن " name="search">
+              <button class="search_btn"><i class="fas fa-search " style="color: gray;font-size: 17px;text-align: right;"></i></button>
+              <input type="text" class="search_field" placeholder="... جستجو کن " name="search" style="font-size: 15px;padding-top: 10px;padding-bottom: 10px">
             </form>
 
           </div>
@@ -97,7 +87,7 @@
 
     <div class="row w-100 p-0 m-0 cat_div mr-2 mb-1 d-flex justify-content-around">
       <div class="dropdown mt-2">
-        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i id="button" class="fa fa-list-alt" aria-hidden="true"></i> دسته بندی ها</button>
+        <button style="font-size: 13px" class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i id="button" class="fa fa-list-alt" aria-hidden="true"></i> دسته بندی ها</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdowns">
                 <div style="text-align: center">
                     <dl>
@@ -105,7 +95,7 @@
                             <dt><a class="dropdown-item" href="{% url 'categories_product' category.slug%}" style="font-weight: bold">{{ category.category_name }}</a></dt>
                             {% for child in childs %}
                                {% if child.parent == category %}
-                                 <dd style="list-style-type:disc"><a class="dropdown-item" href="{% url 'categories_product' child.slug%}" style="font-weight: bold">{{ child.category_name }}</a></dd>
+                                 <dd style="font-size: 11px"><a class="dropdown-item" href="{% url 'categories_product' child.slug%}" style="font-weight: bold">{{ child.category_name }}</a></dd>
                                {% endif %}
                             {% endfor %}
 
@@ -121,7 +111,7 @@
       </div>
 
       <div class="dropdown mt-2">
-        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store"></i> فروشگاه ها</button>
+        <button style="font-size: 13px" class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store"></i> فروشگاه ها</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           {% for shop in shops %}
                  <a class="dropdown-item" href="{% url 'shops_product' shop.slug%}">{{ shop.name }}</a>
@@ -131,7 +121,7 @@
 
 
       <div class="dropdown mt-2">
-        <button class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> برندها</button>
+        <button style="font-size: 13px" class="btn buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> برندها</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           {% for brand in brands %}
                  <a class="dropdown-item" href="{% url 'brands_product' brand.slug%}">{{ brand.brand_name }}</a>
@@ -140,7 +130,7 @@
       </div>
 
 
-      <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 10px;"><i class="far fa-question-circle"></i> سوالی دارید</button>
+      <button  class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 13px"><i class="far fa-question-circle"></i> سوالی دارید</button>
     </div>
 
 {% block javascript %}

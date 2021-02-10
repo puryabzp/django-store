@@ -27,5 +27,5 @@ def shops_processor(request):
 
 
 def mobile_processor(request):
-    mobiles = ShopProduct.objects.filter(product__category__category_name='mobile')
+    mobiles = ShopProduct.objects.filter(product__category__category_name='موبایل')
     return {'mobiles': mobiles}
