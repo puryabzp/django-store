@@ -1,0 +1,80 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+آپدیت مشخصات کاربری
+{% endblock %}
+{% block body %}
+        {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-3 mb-3" role="alert" id="alert" style="text-align: right;direction: rtl">
+                        {% for key,error in form.errors.items %}
+                             <strong class="d-flex flex-column"> {{ key  }} : {{ error | striptags }}</strong>
+                        {% endfor %}
+
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+    {% endif %}
+
+ <div class="container h-100 w-100 mt-3 mb-3" dir="rtl" style="border-radius: 15px">
+            <div class="row h-100 w-100 d-flex justify-content-center align-items-center" style="border-radius: 15px">
+
+                <div class="col-8 d-flex justify-content-center align-items-center" style="border-radius: 15px;background-image: url({% static 'img/pngtree-taobao-vector-creative-technology-online-shopping-illustration-computer-finger-poster-image_131803.jpg' %});background-size: contain;">
+
+                <form action="{% url 'update_profile' user.slug %}" method="post" class="mt-3 mb-3" style="text-align: right;border-radius: 15px" dir="rtl">
+                     <h5 style="display: block;color: white">آپدیت مشخصات کاربری</h5>
+                                           {% csrf_token %}
+                                                     <div class="mt-2 mb-2" style="color: white">
+                                                         <span>
+                                                             نام :
+                                                         </span>
+                                                         {{form.first_name}}
+                                                     </div>
+                                                     <div class="mt-2 mb-2" style="color: white">
+                                                         <span>
+                                                             نام خانوادگی :
+                                                         </span>
+                                                         {{form.last_name}}
+                                                     </div>
+                                                      <div class="mt-2 mb-2" style="color: white">
+                                                         <span>
+                                                             شماره ملی :
+                                                         </span>
+                                                          {{form.melli_code}}
+                                                     </div>
+                                                      <div class="mt-2 mb-2" style="color: white">
+                                                         <span>
+                                                             شماره موبایل :
+                                                         </span>
+                                                          {{form.mobile_number}}
+                                                     </div>
+                                                      <div class="mt-2 mb-2" style="color: white">
+                                                         <span>
+                                                             آدرس ایمیل :
+                                                         </span>
+                                                          {{form.email}}
+                                                     </div>
+
+
+                                               <button class="btn btn-primary mx-auto" type="submit" style="margin: 0 auto;">آپدیت</button>
+                </form>
+
+                </div>
+            </div>
+    </div>
+{% endblock %}
+
+
+{##}
+{#<form action="{% url 'update_profile' user.slug %}" method="post" class="mt-3 mb-3">#}
+{#                           {% csrf_token %}#}
+{#                               <div class="mt-2 mb-2">#}
+{#                                   {% for field in form %}#}
+{#                                    {{ field }}#}
+{#                                   {% endfor %}#}
+{#                               </div>#}
+{##}
+{#                               <button class="btn btn-primary" type="submit">آپدیت</button>#}
+{#                           </form>#}

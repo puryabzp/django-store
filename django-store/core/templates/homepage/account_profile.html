@@ -1,0 +1,190 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+    {{ user.email }}
+{% endblock %}
+{% block body %}
+    <div class="container mt-4 mb-4 bg-light" style="border-radius: 15px;">
+        <div class="row m-0 p-0">
+            <div class="col-4" dir="rtl" style="text-align: right;"></div>
+            <div class="col-8 d-flex mt-4" dir="rtl">
+                <img src="{% static 'img/img_avatar.png' %}" alt="Avatar" style="width:200px;border-radius: 50%;">
+                <div class="mt-5 mr-3" dir="rtl" style="text-align: right;">
+                    <h5>{{ object.first_name}} {{ object.last_name}}</h5>
+                    <h5>{{ object.email}}</h5>
+                </div>
+
+            </div>
+
+            <div class="col-12 mt-3" dir="rtl" style="text-align: right">
+                <h5 class="mt-3 mb-3" style="text-align: right;">اطلاعات شخصی </h5>
+                <table class="table">
+                    <thead class="bg-info">
+                      <tr>
+                        <th scope="col">نام</th>
+                        <th scope="col">نام خانوادگی</th>
+                        <th scope="col">کد ملی</th>
+                        <th scope="col">شماره موبایل</th>
+                        <th scope="col"> </th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                            {{ object.first_name}}
+                        </td>
+                        <td>{{ object.last_name}}</td>
+                          {% if object.melli_code %}
+                          <td>{{ object.melli_code}}</td>
+                          {% else %}
+                              <td>-</td>
+                          {% endif %}
+                          {% if object.mobile_number %}
+                          <td>{{ object.mobile_number}}</td>
+                          {% else %}
+                              <td>-</td>
+                          {% endif %}
+                        <td>
+                            <button class="btn btn-secondary"><a href="{% url 'update_profile' user.slug %}" style="color: white;text-decoration: none;text-align: center;font-weight: bold">آپدیت حساب کاربری</a></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+            </div>
+            <div class="col-12 mt-3" dir="rtl" style="text-align: right;">
+                <h5 class="mt-3 mb-3" style="text-align: right;"> مشخصات محل سکونت </h5>
+                <table class="table">
+                    <thead class="bg-info">
+                      <tr>
+                        <th scope="col">آدرس</th>
+                        <th scope="col">کد پستی</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% if account_addresses %}
+                        {% for account_address in account_addresses %}
+                          <tr>
+                        <td>{{ account_address.address }}</td>
+                        <td>{{ account_address.postal_code }}</td>
+                      </tr>
+                        {% endfor %}
+                        {% else %}
+                      <tr>
+                        <td>-</td>
+                        <td>-</td>
+                      </tr>
+                    {% endif %}
+                    </tbody>
+                  </table>
+
+            </div>
+        {% if account_shops %}
+          <div class="col-12 mt-4" dir="rtl" style="text-align: right;">
+                <h5 class="mt-3 mb-3" style="text-align: right;"> مشخصات فروشگاه های کاربر </h5>
+                <table class="table">
+                    <thead class="bg-info">
+                      <tr>
+                        <th scope="col">تصویر فروشگاه</th>
+                        <th scope="col">نام فروشگاه</th>
+                        <th scope="col">توضیحات</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for account_shop in account_shops %}
+                      <tr>
+                        <td><img src="{{ account_shop.image.url }}" style="width: 30px;height: 30px"></td>
+                        <td>{{account_shop.name}}</td>
+                        <td>{{account_shop.name}}</td>
+                      </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                  </table>
+
+            </div>
+        {% endif %}
+
+            <div class="col-12 mt-4 mb-4" dir="rtl" style="text-align: right;">
+                <h5>دسترسی های کاربری</h5>
+            </div>
+            <div class="col-12" style="text-align: right;" dir="rtl">
+
+                <ul class="nav nav-tabs mb-2" id="myTab" role="tablist" >
+                    <li class="nav-item">
+                      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">علاقه مندی ها</a>
+                    </li>
+                    {% if account_shops %}
+                     <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">دسترسی مدیر فروشگاه</a>
+                     </li>
+                    {% endif %}
+
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab" dir="rtl" style="text-align: right;">
+
+
+                        <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th scope="col">تصویر محصول</th>
+                                <th scope="col">نام محصول</th>
+                                <th scope="col">قیمت</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            {% if favorites %}
+
+                                {% for favorite in favorites %}
+                                   <tr>
+                                    <td><img src="{{favorite.product.image.url}}" style="width: 30px;height: 30px"></td>
+                                    <td>{{ favorite.product.title }}</td>
+                                    <td>{{ favorite.product.products.all.first.price }}</td>
+                                  </tr>
+                                {% endfor %}
+                            {% else %}
+                              <tr>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                              </tr>
+                            {% endif %}
+
+                            </tbody>
+                          </table>
+
+
+
+
+
+                    </div>
+                    <div class="tab-pane fade mb-3" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="text-align: center">
+
+                        <p>جهت اضافه کردن محصول وارد شوید</p>
+                         <button class="btn btn-secondary"><a href="{% url 'create_shop_product' %}" style="color: white;text-decoration: none;text-align: center;font-weight: bold">ورود</a></button>
+
+
+
+
+                    </div>
+                  </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    <script>
+         function reload(){
+             location.reload(true);
+
+         }
+
+    </script>
+{% endblock %}

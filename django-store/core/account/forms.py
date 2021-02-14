@@ -1,6 +1,5 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import User
 from django.core.exceptions import ValidationError
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.forms import AuthenticationForm
@@ -8,8 +7,8 @@ from .models import User
 
 
 class SignInForm(AuthenticationForm):
-
-    username = forms.EmailField(label=_('نام کاربری '), required=True, help_text=_('در نظر داشته باشید که نام کاربری همان ایمیل شما میباشد.'))
+    username = forms.EmailField(label=_('نام کاربری '), required=True,
+                                help_text=_('در نظر داشته باشید که نام کاربری همان ایمیل شما میباشد.'))
     password = forms.CharField(label=_('رمز عبور'), widget=forms.PasswordInput, required=True)
 
     def clean_password(self):
@@ -19,14 +18,14 @@ class SignInForm(AuthenticationForm):
         try:
             user = User.objects.get(email=username)
             if not check_password(password, user.password):
-                 raise ValidationError(_('پسوورد غلطه!!!'))
+                raise ValidationError(_('پسوورد غلطه!!!'))
         except User.DoesNotExist:
             pass
         return password
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
-        if len(username)>40:
+        if len(username) > 40:
             raise ValidationError(_('طول ایمیل بیش از حد متعارف میباشد!'))
         try:
             User.objects.get(email=username)
@@ -37,7 +36,6 @@ class SignInForm(AuthenticationForm):
 
 class RegisterForm(forms.ModelForm):
     password2 = forms.CharField(label=_('تایید پسوورد'), required=True)
-
 
     class Meta:
         model = User
@@ -70,7 +68,7 @@ class RegisterForm(forms.ModelForm):
         try:
             user_lastname = User.objects.get(last_name=last_name)
             if user_lastname and user_lastname.first_name == first_name:
-                full_name = first_name+' '+last_name
+                full_name = first_name + ' ' + last_name
                 raise ValidationError(_(f'کاربری با نام  {full_name}  موجود است'))
 
         except User.DoesNotExist:
@@ -87,3 +85,15 @@ class RegisterForm(forms.ModelForm):
             pass
         return melli_code
 
+
+class AccountUpdate(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'mobile_number', 'melli_code']
+        widgets = {
+            'first_name': forms.TextInput,
+            'last_name': forms.TextInput,
+            'mobile_number': forms.TextInput,
+            'email': forms.TextInput,
+            'melli_code': forms.TextInput
+        }

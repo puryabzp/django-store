@@ -9,7 +9,7 @@
 
           <div class="dropdown" style="display: inline;">
                 <button class="basket btn buttons dropdown-toggle mt-3 mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="create_basket()" style="font-size: 15px" ><i class="fas fa-shopping-basket"></i></button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="sabad" style="height: auto; width: 400px">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="sabad" style="height: auto; width: 500px">
                     <button class="btn btn-primary ml-5 mb-1" onclick="delete_basket({{ user.user_baskets.id }})" style="font-size: 13px;width: 30%">حذف سبد خرید</button>
 
                     <div style="font-size: 12px;width: 100%;height: auto" dir="rtl">
@@ -26,16 +26,18 @@
                             <button id="hide_button" onclick="test({{ user.user_baskets.id }})" hidden>dsdsd</button>
                             <tbody id="simon">
 
-                            {% for basket_item in basket_items %}
+                            {% for basket_item in basket_items|slice:"0:4" %}
                                 {% if basket_item.basket.user ==  user  %}
-                                         <tr>
+                                         <tr id="ef{{ basket_item.id }}">
                                             <td><img src="{{ basket_item.shop_product.product.image.url }}" style="width: 30px;height: 30px"></td>
                                             <td>{{ basket_item.shop_product.product.title }}</td>
                                             <td id="d{{ basket_item.id }}">{{basket_item.shop_product.price}}</td>
                                             <td>
                                                 <button class="btn" style="border: none;background-color: transparent" onclick="plus_item({{ basket_item.id }})"><i class="fas fa-plus" style="color: green"></i></button>
-                                                <span class="ml-1 mr-1 teo" id="{{ basket_item.id }}">{{ basket_item.count }}</span>
+                                                <span class="ml-1 mr-1 huncho" id="{{ basket_item.id }}">{{ basket_item.count }}</span>
                                                 <button class="btn" style="border: none;background-color: transparent" onclick="minus_item({{ basket_item.id }})"><i class="fas fa-minus" style="color: red"></i></button>
+                                                <button class="btn" style="border: none;background-color: transparent" onclick="delete_basket_item({{ basket_item.id }})"><i class="fa fa-trash" aria-hidden="true" style="color: black"></i></button>
+                                                <input id="id_for_delete" value="{{ basket_item.id }}" type="hidden">
 
                                             </td>
                                          </tr>
@@ -57,6 +59,7 @@
           {% if user.is_authenticated %}
 
               <button class="login_btn"><a href="{% url 'logout' %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold">خروج از حساب کاربری</a> <i class="fas fa-user"></i></button>
+              <button class="login_btn"><a href="{% url 'user_details' request.user.slug %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold">مشاهده پروفایل کاربری</a> <i class="fas fa-user"></i></button>
           {% else %}
               <button class="login_btn"><a href="{% url 'login' %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold">ورود به حساب کاربری</a> <i class="fas fa-user"></i></button>
           {% endif %}
@@ -135,7 +138,8 @@
 
 {% block javascript %}
 <script>
-    function create_basket() {
+
+function create_basket() {
              $.ajax({
                     type: 'post',
                     data:{'user':''},
@@ -204,15 +208,36 @@
                 success: function (response) {
                     console.log(response)
                     const data = JSON.parse(response)
-                     var minus = '#' + data['basket_item_id']
-                     var price = '#d'+data['basket_item_id']
-                     $(minus).text(data['basket_item_count'])
+                    const minus = '#' + data['basket_item_id'];
+                    const price = '#d' + data['basket_item_id'];
+                    $(minus).text(data['basket_item_count'])
                      $(price).text(data['price'])
 
                 }
             });
 
     }
+    function delete_basket_item(basket_item_id) {
+      const data = JSON.stringify({basket_item_id: basket_item_id})
+
+      $.ajax({
+                type: 'post',
+                url: "{% url 'delete_basket_item' %}",
+                data: data,
+                success: function (response) {
+                    console.log(response)
+                    const data = JSON.parse(response)
+                    const id = '#ef' + data['basket_item'];
+                    $(id).remove();
+
+
+                }
+            });
+      if ($('.huncho').val()==='0'){
+          delete_basket($('#id_for_delete').val())
+      }
+}
+
 
 
 

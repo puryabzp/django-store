@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+افزودن محصول بخه فروشگاه
+{% endblock %}
+{% block body %}
+        {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show mt-3 mb-3" role="alert" id="alert" style="text-align: right;direction: rtl">
+                        {% for key,error in form.errors.items %}
+                             <strong class="d-flex flex-column"> {{ key  }} : {{ error | striptags }}</strong>
+                        {% endfor %}
+
+
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+    {% endif %}
+ <div class="container h-100 w-100 mt-3 mb-3" dir="rtl" style="border-radius: 15px">
+            <div class="row h-100 w-100 d-flex justify-content-center align-items-center" style="border-radius: 15px">
+
+                <div class="col-8 bg-light d-flex justify-content-center align-items-center" style="border-radius: 15px; background-image: url({% static 'img/store-background-design_1212-354.jpg' %});background-size: contain;opacity: 20" >
+
+                <form action="{% url 'create_shop_product' %}" method="post" class="mt-3 mb-3" style="text-align: right;border-radius: 15px" dir="rtl">
+                                           {% csrf_token %}
+                                                {% for field in form %}
+                                                     <div class="mt-2 mb-2" style="border-radius: 15px">
+                                                         {{field}}
+                                                     </div>
+                                                {% endfor %}
+
+
+                                               <button class="btn btn-danger mx-auto" type="submit" style="margin: 0 auto;">افزودن</button>
+                </form>
+
+                </div>
+            </div>
+    </div>
+{% endblock %}

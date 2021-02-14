@@ -136,6 +136,7 @@ class ShopProduct(models.Model):
         verbose_name = _("shop_product")
         verbose_name_plural = _("shop_products")
         ordering = ['-created_at']
+        unique_together = [['shop', 'product']]
 
     def __str__(self):
         return self.product.title
@@ -173,3 +174,5 @@ class Like(models.Model):
         unique_together = [['user', 'product']]
         ordering = ['-create_at']
 
+    def __str__(self):
+        return self.product.title

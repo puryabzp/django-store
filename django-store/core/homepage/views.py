@@ -4,8 +4,10 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
 
-from .models import SlideShow,BestBrand,ExceptionalDiscounts
+from .models import SlideShow, BestBrand, ExceptionalDiscounts
 from store.models import Product
+
+
 # Create your views here.
 
 
@@ -19,8 +21,8 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data()
         context['slide_list'] = SlideShow.objects.all()
-        context['best_brands']=BestBrand.objects.all()
-        context['discounts']=ExceptionalDiscounts.objects.all()
+        context['best_brands'] = BestBrand.objects.all()
+        context['discounts'] = ExceptionalDiscounts.objects.all()
         return context
 
 
@@ -33,3 +35,5 @@ class HomeView(TemplateView):
 #         context['mobiles'] = Product.objects.filter(category__category_name='mobile')
 #         print(context['mobiles'])
 #         return context
+def home_view(request):
+    return redirect('home')

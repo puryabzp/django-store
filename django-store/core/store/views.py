@@ -2,11 +2,15 @@ import json
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import ListView,DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .filters import MostExpensivePrice
+from .forms import AddShopProduct
 
-from .models import Product,ShopProduct,ProductsImage,ProductMeta,Comment,Like
+from .models import Product, ShopProduct, ProductsImage, ProductMeta, Comment, Like
+
+
 # Create your views here.
 
 
@@ -18,6 +22,9 @@ class ProductsOfCategory(ListView):
         products = Product.objects.filter(category__slug=self.kwargs['slug'])
         print(products)
         return render(request, 'homepage/category_products.html', context={'products': products})
+
+    def get_ordering(self):
+        pass
 
 
 class ProductsOfBrand(ListView):
@@ -59,7 +66,6 @@ def product_list(request):
     return render(request, 'homepage/products.html', {'filter': f})
 
 
-
 @csrf_exempt
 def comment_create(request):
     data = json.loads(request.body)
@@ -70,7 +76,8 @@ def comment_create(request):
     comment.save()
     comment_count = product.comments.count()
     print(comment_count)
-    resopnse = {'author': str(user.email), 'content': comment.content,'comment_count': comment_count, 'comment_id': comment.id}
+    resopnse = {'author': str(user.email), 'content': comment.content, 'comment_count': comment_count,
+                'comment_id': comment.id}
 
     return HttpResponse(json.dumps(resopnse), status=201)
 
@@ -85,7 +92,8 @@ class SearchField(ListView):
         print(search)
         if not search:
             return render(request, 'homepage/empty_search.html', {})
-        search_products = ShopProduct.objects.filter(Q(product__title__icontains=search) | Q(product__category__category_name__icontains=search))
+        search_products = ShopProduct.objects.filter(
+            Q(product__title__icontains=search) | Q(product__category__category_name__icontains=search))
         result = tuple(search_products)
         if not search_products:
             return render(request, 'homepage/not_found.html', {})
@@ -98,11 +106,21 @@ def add_score(request):
     product_id = data['product_id']
     product = Product.objects.get(id=product_id)
     try:
-        Like.objects.create(product=product,user=request.user)
+        Like.objects.create(product=product, user=request.user)
 
     except:
 
         pass
-    resopnse = {'like_count': product.like_count,}
+    resopnse = {'like_count': product.like_count, }
     return HttpResponse(json.dumps(resopnse), status=201)
 
+
+class ShopProductCreate(CreateView):
+    model = ShopProduct
+    form_class = AddShopProduct
+    template_name = 'homepage/add_shop_product.html'
+    success_url = 'home'
+
+    def get_success_url(self):
+        print(self.object)
+        return reverse('user_details', kwargs={'slug': self.object.shop.user.slug})
