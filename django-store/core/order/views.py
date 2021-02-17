@@ -118,3 +118,7 @@ def delete_basket_item(request):
     except BasketItem.DoesNotExist:
         pass
     return HttpResponse(json.dumps(response), status=201)
+
+
+def basket_page(request):
+    return render(request, 'homepage/basket_page.html', context={})

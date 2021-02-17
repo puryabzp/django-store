@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import create_basket,add_to_basket,delete_basket,plus_basket_item,minus_basket_item,delete_basket_item
+from .views import create_basket,add_to_basket,delete_basket,plus_basket_item,minus_basket_item,delete_basket_item,basket_page
 
 
 urlpatterns = [
@@ -9,7 +9,7 @@ urlpatterns = [
     path('plus_basket_item/', plus_basket_item, name='plus_basket_item'),
     path('minus_basket_item/', minus_basket_item, name='minus_basket_item'),
     path('delete_basket_item/', delete_basket_item, name='delete_basket_item'),
-    # path('user_items_basket/', user_items_basket, name='user_items_basket'),
+    path('user_basket/', basket_page, name='user_basket'),
     # path('mobiles/', MobileSlider.as_view(), name='mobiles'),
 
 ]

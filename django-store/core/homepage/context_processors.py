@@ -1,4 +1,4 @@
-from store.models import Category,Brand,Product,ShopProduct
+from store.models import Category, Brand, Product, ShopProduct
 from account.models import Shop
 
 
@@ -6,8 +6,7 @@ def categories_processor(request):
     categories = Category.objects.filter(parent__isnull=True)
     childs = Category.objects.filter(parent__isnull=False)
 
-    return {'categories': categories,'childs':childs}
-
+    return {'categories': categories, 'childs': childs}
 
 
 # def child_proccessor(request):

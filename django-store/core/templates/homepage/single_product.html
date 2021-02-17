@@ -16,9 +16,11 @@
             </div>
 
 
-            <div class="col-12 bg-light d-flex p-0 m-0">
-                <div class="col-4" style="text-align: right;" dir="rtl">
-                    <div class="m-2" style="background-color: rgb(238, 238, 238);border-radius: 15px;">
+            <div class="col-12 row bg-light d-flex p-0 m-0">
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4" style="text-align: right;" dir="rtl">
+
+                                        <div class="m-2" style="background-color: rgb(238, 238, 238);border-radius: 15px;">
                         <div class="p-3" style="border-bottom: 1px solid rgb(207, 207, 207);">
                             {% for shop_product in shop_products|slice:"1" %}
 
@@ -44,10 +46,13 @@
 
 
                     </div>
+
+
                 </div>
-                <div class="col-4" style="text-align: right;">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4" >
+
                     <div style="border-bottom: 1px solid rgb(207, 207, 207);color: rgb(63, 63, 63);">
-                        <h5 class="mt-3 mb-4">{{ object.title }}</h5>
+                        <h5 class="mt-3 mb-4" style="text-align: center">{{ object.title }}</h5>
                     </div>
                     <div class="p-3 d-flex justify-content-around" dir="rtl">
                         <div>
@@ -102,11 +107,102 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="col-4 bg-light p-0 m-0">
-                    <img class="w-100 h-100 p-3" src="{{ object.image.url }}">
+
 
                 </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-0 m-0">
+                      <img class="w-100 h-100 p-3" src="{{ object.image.url }}">
+                </div>
+{#                <div class="col-4" style="text-align: right;" dir="rtl">#}
+{#                    <div class="m-2" style="background-color: rgb(238, 238, 238);border-radius: 15px;">#}
+{#                        <div class="p-3" style="border-bottom: 1px solid rgb(207, 207, 207);">#}
+{#                            {% for shop_product in shop_products|slice:"1" %}#}
+{##}
+{#                                <span style="font-size: 17px;">فروشنده محصول:</span>#}
+{#                                <span style="font-size: 17px;">{{ shop_product.shop.name }}</span>#}
+{#                                <div>#}
+{#                                    <span class="mt-2" style="font-size: 13px;">رضایت خرید : </span>#}
+{#                                    <span style="font-size: 13px;">۹۸ درصد </span>#}
+{##}
+{#                                </div>#}
+{##}
+{#                                </div>#}
+{#                                <p class="p-3" style="font-size: 14px;border-bottom: 1px solid rgb(207, 207, 207);">گارانتی#}
+{#                                    اصالت و سلامت فیزیکی کالا</p>#}
+{#                                <div style="text-align: center;">#}
+{#                                <span>قیمت : </span>#}
+{#                                <span style="text-decoration: line-through; color: rgb(156, 156, 156);">۱۰۰۰۰</span>#}
+{#                                <span>{{ shop_product.price }} تومان</span>#}
+{##}
+{#                                <button style="width: 80%;height:auto;font-size: 15px;" class="btn btn-info btn-lg mt-3 mb-3" onclick="add_to_basket({{ shop_product.id }},{{ user.user_baskets.id }})">+ افزودن به سبد خرید</button>#}
+{#                            {% endfor %}#}
+{#                            </div>#}
+{##}
+{##}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-4" style="text-align: right;">#}
+{#                    <div style="border-bottom: 1px solid rgb(207, 207, 207);color: rgb(63, 63, 63);">#}
+{#                        <h5 class="mt-3 mb-4">{{ object.title }}</h5>#}
+{#                    </div>#}
+{#                    <div class="p-3 d-flex justify-content-around" dir="rtl">#}
+{#                        <div>#}
+{#                            <span style="font-size: 13px;"><i style="color: rgb(241, 185, 41);" class="fas fa-star"></i> امتیاز : </span>#}
+{#                            <span style="font-size: 13px;" id="score_detail">{{object.like_count}} </span>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <span style="font-size: 13px;">تعداد دیدگاه کاربران : </span>#}
+{#                            <span style="font-size: 13px;" id="comment_count">{{ product_comments.count }} </span>#}
+{#                        </div>#}
+{##}
+{#                    </div>#}
+{#                    <div class="mt-1 d-flex justify-content-around" dir="rtl">#}
+{#                        <div>#}
+{#                            <span style="font-size: 13px;">دسته بندی: </span>#}
+{#                            <a href="{% url 'categories_product' object.category.slug %}"#}
+{#                               style="font-size: 13px;text-decoration: none; color: rgb(27, 192, 204);"> {{ object.category }} </a>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                            <span style="font-size: 13px;">برند : </span>#}
+{#                            <a href="{% url 'brands_product' object.brand.slug %}"#}
+{#                               style="font-size: 13px;text-decoration: none; color: rgb(27, 192, 204);"> {{ object.brand }} </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="mt-1">#}
+{#                        <div class="pr-5" style="text-align: center;">#}
+{#                            <div dir="rtl">#}
+{#                                <span style="font-size: 13px;">انتخاب رنگ : </span>#}
+{#                            </div>#}
+{#                            <div class="d-flex justify-content-around">#}
+{#                                <div class="form-check">#}
+{#                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">#}
+{#                                    <label class="form-check-label" for="flexRadioDefault1">#}
+{#                                        قرمز#}
+{#                                    </label>#}
+{#                                </div>#}
+{#                                <div class="form-check">#}
+{#                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"#}
+{#                                           checked>#}
+{#                                    <label class="form-check-label" for="flexRadioDefault2">#}
+{#                                        آبی#}
+{#                                    </label>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="d-flex justify-content-around mt-4">#}
+{#                                <button class="btn" style="color: rgba(247, 2, 2, 0.87);font-size: 18px;background-color: transparent;border: none" onclick="add_score({{ object.id }})"><i class="fas fa-heart"></i></button>#}
+{#                                <button class="btn" style="color: goldenrod;font-size: 18px;background-color: transparent;border: none"><i class="fas fa-bell"></i></button>#}
+{#                                <button class="btn" style="font-size: 18px;background-color: transparent;border: none"><i class="fas fa-share-alt"></i></button>#}
+{##}
+{#                            </div>#}
+{##}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-4 bg-light p-0 m-0">#}
+{#                    <img class="w-100 h-100 p-3" src="{{ object.image.url }}">#}
+{##}
+{#                </div>#}
 
 
             </div>

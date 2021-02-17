@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+category
+{% endblock %}
+{% block body %}
+      <div class="container mt-5 mb-5">
+        <div class="row" style="text-align: right;" dir="rtl">
+            <div class="col-12">
+                <h5>اطلاعات مشتری</h5>
+                <table class="table bg-secondary" style="border-radius: 15px;color: white">
+                    <thead>
+                      <tr>
+                        <th scope="col">نام</th>
+                        <th scope="col">نام خانوادگی</th>
+                        <th scope="col">شماره ملی</th>
+                        <th scope="col">شماره موبایل</th>
+                        <th scope="col">تاریخ ایجاد</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.melli_code }}</td>
+                        <td>{{ user.mobile_number }}</td>
+                          <td>{{ user.user_baskets.create_at }}</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+
+
+
+            </div>
+            <div class="col-12">
+                <h5>سبد خرید</h5>
+                <table class="table bg-light" style="border-radius: 15px">
+                    <thead>
+
+                      <tr>
+                        <th scope="col">تصویر</th>
+                        <th scope="col">نام محصول</th>
+                        <th scope="col">تعداد</th>
+                        <th scope="col">فروشنده</th>
+                        <th scope="col">مبلغ</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                     {% for basket_item in basket_items %}
+                         {% if basket_item.basket.user == user  %}
+                             <tr>
+                                <td>
+                                    <img src="{{ basket_item.shop_product.product.image.url }}" style="height: 50px;width: 50px">
+                                </td>
+                                <td>{{ basket_item.shop_product.product.title }}</td>
+                                <td>{{ basket_item.count }}</td>
+                                <td>{{ basket_item.shop_product.shop.name }}</td>
+                                <td>{{ basket_item.shop_product.price }}</td>
+                             </tr>
+                         {% endif %}
+
+                     {% endfor %}
+
+                    </tbody>
+                  </table>
+
+            </div>
+            <div class="col-12" style="text-align: center;" dir="rtl">
+                <a href="#" style="text-align: center;">رفتن به مرحله سفارش گذاری</a>
+            </div>
+
+        </div>
+  </div>
+{% endblock %}

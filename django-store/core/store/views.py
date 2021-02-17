@@ -20,21 +20,23 @@ class ProductsOfCategory(ListView):
 
     def get(self, request, *args, **kwargs):
         products = Product.objects.filter(category__slug=self.kwargs['slug'])
-        print(products)
+        # print(products)
         return render(request, 'homepage/category_products.html', context={'products': products})
 
-    def get_ordering(self):
-        pass
+    # def get_ordering(self):
+    #     ordering = self.request.GET['q']
+    #     return self.get_queryset().order_by(self,ordering)
 
 
 class ProductsOfBrand(ListView):
     model = Product
-    template_name = 'homepage/category_products.html'
+    template_name = 'homepage/products_of_brand.html'
+    paginate_by = 3
 
     def get(self, request, *args, **kwargs):
         products = Product.objects.filter(brand__slug=self.kwargs['slug'])
-        print(products)
-        return render(request, 'homepage/category_products.html', context={'products': products})
+        # print(products)
+        return render(request, self.template_name, context={'products': products})
 
 
 class ProductsOfShop(ListView):
@@ -43,7 +45,7 @@ class ProductsOfShop(ListView):
 
     def get(self, request, *args, **kwargs):
         products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug'])
-        print(products)
+        # print(products)
         return render(request, 'homepage/shops_products.html', context={'products': products})
 
 
@@ -75,7 +77,7 @@ def comment_create(request):
     comment = Comment.objects.create(author=user, product=product, content=content)
     comment.save()
     comment_count = product.comments.count()
-    print(comment_count)
+    # print(comment_count)
     resopnse = {'author': str(user.email), 'content': comment.content, 'comment_count': comment_count,
                 'comment_id': comment.id}
 
@@ -89,7 +91,7 @@ class SearchField(ListView):
 
     def post(self, request, *args, **kwargs):
         search = request.POST['search']
-        print(search)
+        # print(search)
         if not search:
             return render(request, 'homepage/empty_search.html', {})
         search_products = ShopProduct.objects.filter(
@@ -122,5 +124,5 @@ class ShopProductCreate(CreateView):
     success_url = 'home'
 
     def get_success_url(self):
-        print(self.object)
+        # print(self.object)
         return reverse('user_details', kwargs={'slug': self.object.shop.user.slug})

@@ -73,19 +73,37 @@ category
 
                           </div>
                         </div>
-                        <div class="col-3" style="text-align: center;" dir="rtl">
-                              <div class="bg-light mt-5" dir="rtl">
-
-                                <!-- <div class="checkbox">
+                        <div class="col-3 mt-4" style="text-align: center;" dir="rtl">
+                              <div class="bg-light mt-2" style="border-radius: 15px" dir="rtl">
+                                  <div class="mb-3">
+                                      فروشنده های محصولات :
+                                  </div>
+                               {% for shop in shops %}
+                                   <div class="checkbox">
                                   <label>
-                                    <input type="checkbox" data-toggle="toggle">
-                                    کالاهای موجود
+                                    <input type="checkbox" data-toggle="toggle" value="{{ shop.slug }}">
+                                      {{ shop.name}}
                                   </label>
-                                </div> -->
+                                </div>
+                               {% endfor %}
 
 
                               </div>
-                              <div class="bg-light">در این قسمت پنل مربوط به فیلترها قرار میگیرد</div>
+                               <div class="bg-light mt-2" style="border-radius: 15px" dir="rtl">
+                                  <div class="mb-3">
+                                      برند های محصولات :
+                                  </div>
+                               {% for brand in brands %}
+                                   <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" data-toggle="toggle" value="{{ brand.slug }}">
+                                      {{ brand.brand_name }}
+                                  </label>
+                                </div>
+                               {% endfor %}
+
+
+                              </div>
 
                         </div>
         </div>
