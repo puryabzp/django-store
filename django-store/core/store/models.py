@@ -29,7 +29,7 @@ class Brand(models.Model):
     slug = models.SlugField(_('slug'), unique=True, db_index=True)
     created_at = models.DateTimeField(_('created_at'), auto_now_add=True)
     updated_at = models.DateTimeField(_('updated_at'))
-    image = models.ImageField(_('image'), upload_to='brand/images',default='')
+    image = models.ImageField(_('image'), upload_to='brand/images', default='')
 
     class Meta:
         verbose_name = _("Brand")
@@ -55,7 +55,7 @@ class Product(models.Model):
     price = models.DecimalField(default=0.00, decimal_places=2, max_digits=100)
     is_available = models.BooleanField(_('is_available'), default=True)
     product_scores = models.IntegerField(_('product_scores'), default=0)
-    image = models.ImageField(_('image'), upload_to='product/images',default='')
+    image = models.ImageField(_('image'), upload_to='product/images', default='')
 
     class Meta:
         verbose_name = _("product")
@@ -74,7 +74,7 @@ class Product(models.Model):
 class ProductsImage(models.Model):
     name = models.CharField(_('name'), max_length=255)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='products/images',default='')
+    image = models.ImageField(upload_to='products/images', default='')
 
     class Meta:
         verbose_name = _("image_product")
@@ -135,7 +135,7 @@ class ShopProduct(models.Model):
     class Meta:
         verbose_name = _("shop_product")
         verbose_name_plural = _("shop_products")
-        ordering = ['-created_at']
+        ordering = ['price']
         unique_together = [['shop', 'product']]
 
     def __str__(self):
@@ -164,7 +164,7 @@ class Like(models.Model):
     user = models.ForeignKey(User, verbose_name=_('User'), on_delete=models.CASCADE)
     product = models.ForeignKey(Product, verbose_name=_('Product'), on_delete=models.CASCADE,
                                 related_name='product_like', related_query_name='product_like')
-    like = models.BooleanField(_('Condition'),default=True)
+    like = models.BooleanField(_('Condition'), default=True)
     create_at = models.DateTimeField(_("Create at"), auto_now_add=True)
     update_at = models.DateTimeField(_("Update at"), auto_now=True)
 

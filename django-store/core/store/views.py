@@ -1,5 +1,5 @@
 import json
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -11,17 +11,44 @@ from .forms import AddShopProduct
 from .models import Product, ShopProduct, ProductsImage, ProductMeta, Comment, Like
 
 
-# Create your views here.
-
-
 class ProductsOfCategory(ListView):
     model = Product
     template_name = 'homepage/category_products.html'
 
     def get(self, request, *args, **kwargs):
-        products = Product.objects.filter(category__slug=self.kwargs['slug'])
-        # print(products)
-        return render(request, 'homepage/category_products.html', context={'products': products})
+        try:
+            products = Product.objects.filter(category__slug=self.kwargs['slug'])
+            return render(request, 'homepage/category_products.html', context={'products': products})
+        except:
+            return render(request, 'homepage/products.html', context={})
+
+    def post(self, request, *args, **kwargs):
+
+        if request.POST['filter'] == 'alphabet':
+            products = Product.objects.filter(category__slug=kwargs['slug']).order_by('title')
+            return render(request, 'homepage/category_products.html', context={'products': products})
+
+        elif request.POST['filter'] == 'expensive':
+            products = Product.objects.filter(category__slug=kwargs['slug']).order_by('-products__price')
+            return render(request, 'homepage/category_products.html', context={'products': products})
+        elif request.POST['filter'] == 'cheap':
+            products = Product.objects.filter(category__slug=kwargs['slug']).order_by('products__price')
+            return render(request, 'homepage/category_products.html', context={'products': products})
+        elif request.POST['filter'] == 'available':
+            products = Product.objects.filter(category__slug=kwargs['slug']).exclude(products__number_in_stock=0)
+            if products:
+                return render(request, 'homepage/category_products.html', context={'products': products})
+            else:
+                products = Product.objects.filter(category__slug=kwargs['slug'])
+                return render(request, 'homepage/category_products.html', context={'products': products})
+        elif request.POST['filter'] == 'old':
+            products = Product.objects.filter(category__slug=kwargs['slug']).order_by('created_at')
+            return render(request, 'homepage/category_products.html', context={'products': products})
+        elif request.POST['filter'] == 'new':
+            products = Product.objects.filter(category__slug=kwargs['slug']).order_by('-created_at')
+            return render(request, 'homepage/category_products.html', context={'products': products})
+
+        return redirect('home')
 
     # def get_ordering(self):
     #     ordering = self.request.GET['q']
@@ -34,9 +61,35 @@ class ProductsOfBrand(ListView):
     paginate_by = 3
 
     def get(self, request, *args, **kwargs):
-        products = Product.objects.filter(brand__slug=self.kwargs['slug'])
-        # print(products)
-        return render(request, self.template_name, context={'products': products})
+        try:
+            products = Product.objects.filter(brand__slug=self.kwargs['slug'])
+            # print(products)
+            return render(request, self.template_name, context={'products': products})
+
+        except:
+            return render(request, 'homepage/products.html', context={})
+
+    def post(self, request, *args, **kwargs):
+        if request.POST['filter'] == 'alphabet':
+            products = Product.objects.filter(brand__slug=kwargs['slug']).order_by('title')
+            return render(request, 'homepage/products_of_brand.html', context={'products': products})
+
+        elif request.POST['filter'] == 'expensive':
+            products = Product.objects.filter(brand__slug=kwargs['slug']).order_by('-products__price')
+            return render(request, 'homepage/products_of_brand.html', context={'products': products})
+        elif request.POST['filter'] == 'cheap':
+            products = Product.objects.filter(brand__slug=kwargs['slug']).order_by('products__price')
+            return render(request, 'homepage/products_of_brand.html', context={'products': products})
+        elif request.POST['filter'] == 'available':
+            products = Product.objects.filter(brand__slug=kwargs['slug']).exclude(products__number_in_stock=0)
+            return render(request, 'homepage/products_of_brand.html', context={'products': products})
+        elif request.POST['filter'] == 'old':
+            products = Product.objects.filter(brand__slug=kwargs['slug']).order_by('created_at')
+            return render(request, 'homepage/products_of_brand.html', context={'products': products})
+        elif request.POST['filter'] == 'new':
+            products = Product.objects.filter(brand__slug=kwargs['slug']).order_by('-created_at')
+            return render(request, 'homepage/products_of_brand.html', context={'products': products})
+        return redirect('home')
 
 
 class ProductsOfShop(ListView):
@@ -44,9 +97,53 @@ class ProductsOfShop(ListView):
     template_name = 'homepage/shops_products.html'
 
     def get(self, request, *args, **kwargs):
-        products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug'])
-        # print(products)
-        return render(request, 'homepage/shops_products.html', context={'products': products})
+        try:
+            products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug'])
+            # print(products)
+            return render(request, 'homepage/shops_products.html', context={'products': products})
+        except:
+            return render(request, 'homepage/products.html', context={})
+
+    def post(self, request, *args, **kwargs):
+        # if request.POST['janebi']:
+        #     return redirect('login')
+        try:
+            if request.POST['filter'] == 'alphabet':
+                print(request.POST)
+                products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug']).order_by('product__title')
+                return render(request, 'homepage/shops_products.html', context={'products': products})
+            elif request.POST['filter'] == 'expensive':
+                print(request.POST)
+                products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug']).order_by('-price')
+                return render(request, 'homepage/shops_products.html', context={'products': products})
+            elif request.POST['filter'] == 'cheap':
+                print(request.POST)
+                products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug']).order_by('price')
+                return render(request, 'homepage/shops_products.html', context={'products': products})
+            elif request.POST['filter'] == 'available':
+                print(request.POST)
+                products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug']).exclude(number_in_stock=0)
+                return render(request, 'homepage/shops_products.html', context={'products': products})
+            elif request.POST['filter'] == 'old':
+                print(request.POST)
+                products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug']).order_by('created_at')
+                return render(request, 'homepage/shops_products.html', context={'products': products})
+            elif request.POST['filter'] == 'new':
+                print(request.POST)
+                products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug']).order_by('-created_at')
+                return render(request, 'homepage/shops_products.html', context={'products': products})
+        except:
+            try:
+                cat = request.POST.get('janebi')
+                shop_name = request.POST.get('shop')
+                print(cat, shop_name)
+                print(request.POST)
+                products = ShopProduct.objects.filter(shop__name=shop_name).filter(product__category__slug=cat)
+                return render(request, 'homepage/shops_products.html', context={'products': products})
+            except:
+                products = ShopProduct.objects.filter(shop__slug=self.kwargs['slug'])
+                print(type(products))
+                return render(request, 'homepage/shops_products.html', context={'products': products})
 
 
 class ProductDetails(DetailView):
@@ -63,11 +160,6 @@ class ProductDetails(DetailView):
         return context
 
 
-def product_list(request):
-    f = MostExpensivePrice(request.GET, queryset=Product.objects.all())
-    return render(request, 'homepage/products.html', {'filter': f})
-
-
 @csrf_exempt
 def comment_create(request):
     data = json.loads(request.body)
@@ -78,10 +170,10 @@ def comment_create(request):
     comment.save()
     comment_count = product.comments.count()
     # print(comment_count)
-    resopnse = {'author': str(user.email), 'content': comment.content, 'comment_count': comment_count,
+    response = {'author': str(user.email), 'content': comment.content, 'comment_count': comment_count,
                 'comment_id': comment.id}
 
-    return HttpResponse(json.dumps(resopnse), status=201)
+    return HttpResponse(json.dumps(response), status=201)
 
 
 class SearchField(ListView):
@@ -113,8 +205,8 @@ def add_score(request):
     except:
 
         pass
-    resopnse = {'like_count': product.like_count, }
-    return HttpResponse(json.dumps(resopnse), status=201)
+    response = {'like_count': product.like_count, }
+    return HttpResponse(json.dumps(response), status=201)
 
 
 class ShopProductCreate(CreateView):

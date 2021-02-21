@@ -26,19 +26,49 @@ category
                                           <p class="nav-link navs" style="text-decoration: none;color:rgb(80, 80, 80)" ><i class="fas fa-align-left"></i> مرتب سازی بر اساس : </p>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link navs"  href="#" style="text-decoration: none;color:rgb(80, 80, 80)">پرفروش ترین ها <i class="fas fa-money-bill-alt" style="color: green;"></i></a>
+                                            <form action="{% url 'brands_product' products.first.brand.slug %}" method="post">
+                                                {% csrf_token %}
+                                                <input value="alphabet" name="filter" id="alphabet" hidden>
+                                                <button type="submit" class="nav-link navs" style="text-decoration: none;color:rgb(80, 80, 80);border: none;background-color: transparent">براساس نام <i class="fas fa-sort-alpha-up"></i></button>
+                                            </form>
                                         </li>
                                         <li class="nav-item">
-                                          <a class="nav-link" id="navs" href="#" style="text-decoration: none;color:rgb(80, 80, 80)">پربازدید ترین ها <i class="far fa-grin-hearts" style="color: blue;"></i></a>
+                                            <form action="{% url 'brands_product' products.first.brand.slug %}" method="post">
+                                                {% csrf_token %}
+                                                <input value="expensive" name="filter" id="expensive" hidden>
+                                                <button type="submit" class="nav-link" id="navs" style="text-decoration: none;color:rgb(80, 80, 80);border: none;background-color: transparent">گران ترین ها <i style="color: green" class="fas fa-dollar-sign"></i></button>
+                                            </form>
+
                                         </li>
                                         <li class="nav-item">
-                                          <a class="nav-link" id="navs" href="#" style="text-decoration: none;color:rgb(80, 80, 80)">محبوب ترین ها <i class="fas fa-medal" style="color: goldenrod;"></i></a>
+                                            <form action="{% url 'brands_product' products.first.brand.slug %}" method="post">
+                                                {% csrf_token %}
+                                                <input value="cheap" name="filter" id="cheap" hidden>
+                                                <button type="submit" class="nav-link" id="navs" style="text-decoration: none;color:rgb(80, 80, 80);border: none;background-color: transparent">ارزان ترین ها <i style="color: red" class="fas fa-dollar-sign"></i></button>
+                                            </form>
+
                                         </li>
                                         <li class="nav-item">
-                                          <a class="nav-link" id="navs" href="#" style="text-decoration: none;color:rgb(80, 80, 80)">ارزان ترین ها  <i class="fas fa-sort-down" style="color: red;"></i></a>
+                                            <form action="{% url 'brands_product' products.first.brand.slug %}" method="post">
+                                                {% csrf_token %}
+                                                <input value="available" name="filter" id="available" hidden>
+                                                <button class="nav-link" id="navs" type="submit" style="text-decoration: none;color:rgb(80, 80, 80);border: none;background-color: transparent">موجود بودن <i style="color: green" class="fas fa-check"></i></button>
+                                            </form>
                                         </li>
                                         <li class="nav-item">
-                                          <a class="nav-link" id="navs" href="#" style="text-decoration: none;color:rgb(80, 80, 80)">گران ترین ها <i class="fas fa-sort-up" style="color: green;"></i></a>
+                                             <form action="{% url 'brands_product' products.first.brand.slug %}" method="post">
+                                                {% csrf_token %}
+                                                <input value="old" name="filter" id="old" hidden>
+                                                <button class="nav-link" id="navs" type="submit" style="text-decoration: none;color:rgb(80, 80, 80);border: none;background-color: transparent">قدیمی ترین ها  <i class="fas fa-sort-down" style="color: red;"></i></button>
+                                            </form>
+                                        </li>
+                                        <li class="nav-item">
+                                             <form action="{% url 'brands_product' products.first.brand.slug %}" method="post">
+                                                {% csrf_token %}
+                                                <input value="new" name="filter" id="new" hidden>
+                                                <button class="nav-link" id="navs" type="submit" style="text-decoration: none;color:rgb(80, 80, 80);border: none;background-color: transparent">جدید ترین ها <i class="fas fa-sort-up" style="color: green;"></i></button>
+                                            </form>
+
                                         </li>
                                       </ul>
                                     </div>
