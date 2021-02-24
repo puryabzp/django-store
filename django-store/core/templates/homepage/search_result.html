@@ -1,0 +1,94 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+category
+{% endblock %}
+{% block body %}
+
+          <div class="container-fluid mt-2 h-100 w-100">
+        <div class="row d-flex justify-content-between ">
+
+          <div class="col-9 col-sm-9 col-md-9 col-lg-9 row p-0 m-0 h-100 w-100">
+                         <div class="col-12" style="direction: rtl;text-align: right;">
+                          <a href="#" style="text-decoration: none;color:rgb(80, 80, 80)">فروشگاه سدمد کالا</a>
+                        </div>
+                        <div class="col-12 m-0 p-0">
+                            <div class="bg-light m-2" dir="rtl" style="border-radius: 10px;">
+
+                                  <nav class="navbar navbar-expand-lg navbar-light p-0 m-0">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                      <span class="navbar-toggler-icon"></span>
+                                    </button>
+
+                                    <div class="collapse navbar-collapse pl-5 m-0 pb-4" id="navbarSupportedContent" style="border-radius: 10px;" dir="rtl" >
+                                      <ul class="navbar-nav" style="font-size: 13px;text-align: right;" dir="rtl">
+                                        <li class="nav-item">
+                                          <p class="nav-link navs" style="text-decoration: none;color:rgb(80, 80, 80)" ><i class="fas fa-align-left"></i> مرتب سازی بر اساس : </p>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link navs"  href="#" style="text-decoration: none;color:rgb(80, 80, 80)">پرفروش ترین ها <i class="fas fa-money-bill-alt" style="color: green;"></i></a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" id="navs" href="#" style="text-decoration: none;color:rgb(80, 80, 80)">پربازدید ترین ها <i class="far fa-grin-hearts" style="color: blue;"></i></a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" id="navs" href="#" style="text-decoration: none;color:rgb(80, 80, 80)">محبوب ترین ها <i class="fas fa-medal" style="color: goldenrod;"></i></a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" id="navs" href="#" style="text-decoration: none;color:rgb(80, 80, 80)">ارزان ترین ها  <i class="fas fa-sort-down" style="color: red;"></i></a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" id="navs" href="#" style="text-decoration: none;color:rgb(80, 80, 80)">گران ترین ها <i class="fas fa-sort-up" style="color: green;"></i></a>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </nav>
+                            </div>
+                        </div>
+                        <div class="col-12 row d-flex p-2 m-0 h-100 w-100" style="border-radius: 10px;">
+
+                            {% for product in products %}
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-3 p-0 m-0 h-100 w-100 bg-light" style="border: 1px solid rgb(189, 189, 189);text-align: right;width: 100%;height: 100%;">
+                                        <a href="{% url 'product_details' product.product.slug %}" style="text-decoration: none">
+                                             <img class="pt-2 pb-2" src="{{ product.product.image.url }}" style="width: 100%; height: 80%;border-radius: 15px;">
+                                              <div  style="font-size: 76%;text-align: center;direction: rtl;color: rgb(80, 80, 80);">{{ product.product.title }}</div>
+                                                {% if product.products.all.first.number_in_stock is not 0 %}
+                                                <div style="text-align:center;font-size: 70%;color: black;" > <i class="fas fa-check" style="color: green;"></i> : موجود در انبار</div>
+                                                {% else %}
+                                                 <div style="text-align:center;font-size: 70%;color: black;" > <i class="fas fa-times" style="color: red;"></i> : موجود در انبار</div>
+                                                {% endif %}
+
+                                              <div class="pl-3" style="text-align: left;direction: ltr;">
+                                                <span class="badge badge-danger mr-1" style="font-size: 70%;">%۲۰</span>
+                                                <span style="color: grey;text-decoration: line-through;font-size: 70%;">۸۵,۰۰۰</span>
+                                                <p class="pl-2" style="color: black;font-weight: bold;">{{ product.price}}</p>
+                                                <p class="pr-3" style="text-align: right;direction: ltr;font-size: 78%;color:rgb(44, 44, 44);" >{{ product.shop.name}} <i class="fas fa-store-alt" style="color: rgb(175, 23, 23);"></i></p>
+                                              </div>
+                                        </a>
+
+                                </div>
+
+
+
+                            {% endfor %}
+
+                          </div>
+                        </div>
+                        <div class="col-3" style="text-align: center;" dir="rtl">
+                              <div class="bg-light mt-5" dir="rtl">
+
+                                <!-- <div class="checkbox">
+                                  <label>
+                                    <input type="checkbox" data-toggle="toggle">
+                                    کالاهای موجود
+                                  </label>
+                                </div> -->
+
+
+                              </div>
+                              <div class="bg-light">در این قسمت پنل مربوط به فیلترها قرار میگیرد</div>
+
+                        </div>
+        </div>
+      </div>
+{% endblock %}

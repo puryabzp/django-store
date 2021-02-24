@@ -191,7 +191,8 @@ class SearchField(ListView):
         result = tuple(search_products)
         if not search_products:
             return render(request, 'homepage/not_found.html', {})
-        return render(request, 'homepage/products.html', context={'search_products': result})
+        print(result)
+        return render(request, 'homepage/search_result.html', context={'products': result})
 
 
 @csrf_exempt
