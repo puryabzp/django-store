@@ -7,13 +7,14 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class UserAdmin(BaseUserAdmin):
-    list_display = ['email', 'first_name','last_name', 'is_staff', 'slug']
+    list_display = ['email', 'first_name', 'last_name', 'is_staff', 'slug']
+    prepopulated_fields = {"slug": ("email",)}
     change_password_form = AdminPasswordChangeForm
     ordering = ('email',)
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email','first_name','last_name', 'password1', 'password2','slug')
+            'fields': ('email', 'first_name', 'last_name', 'password1', 'password2', 'slug')
         }),
     )
     fieldsets = (
@@ -25,7 +26,7 @@ class UserAdmin(BaseUserAdmin):
             ),
         }),
         (_('Personal info'), {
-            "fields": ('first_name','last_name')
+            "fields": ('first_name', 'last_name')
         }),
         (_('Permissions'), {
             "fields": ('is_staff', 'is_active', 'is_superuser',)

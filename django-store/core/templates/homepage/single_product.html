@@ -39,8 +39,12 @@
                                 <span>قیمت : </span>
                                 <span style="text-decoration: line-through; color: rgb(156, 156, 156);">۱۰۰۰۰</span>
                                 <span>{{ shop_product.price }} تومان</span>
-
+                                {% if user.is_authenticated %}
                                 <button style="width: 80%;height:auto;font-size: 15px;" class="btn btn-info btn-lg mt-3 mb-3" onclick="add_to_basket({{ shop_product.id }},{{ user.user_baskets.id }})">+ افزودن به سبد خرید</button>
+                                 {% else %}
+                                    <button style="width: 80%;height:auto;font-size: 15px;color: gray" class=" btn-lg mt-3 mb-3" disabled>+ افزودن به سبد خرید</button>
+                                {% endif %}
+
                             {% endfor %}
                             </div>
 
@@ -98,7 +102,12 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around mt-4">
-                                <button class="btn" style="color: rgba(247, 2, 2, 0.87);font-size: 18px;background-color: transparent;border: none" onclick="add_score({{ object.id }})"><i class="fas fa-heart"></i></button>
+                                {% if user.is_authenticated %}
+                                 <button class="btn" style="color: rgba(247, 2, 2, 0.87);font-size: 18px;background-color: transparent;border: none" onclick="add_score({{ object.id }})"><i class="fas fa-heart"></i></button>
+                                 {% else %}
+                                    <button class="btn" style="color: gray;font-size: 18px;background-color: transparent;border: none" title="شما دسترسی جهت لایک ندارید"><i class="fas fa-heart"></i></button>
+                                {% endif %}
+
                                 <button class="btn" style="color: goldenrod;font-size: 18px;background-color: transparent;border: none"><i class="fas fa-bell"></i></button>
                                 <button class="btn" style="font-size: 18px;background-color: transparent;border: none"><i class="fas fa-share-alt"></i></button>
 
@@ -225,7 +234,7 @@
                             <span>{{ shop_product.price }} تومان</span>
                         </div>
 
-                        <button style="font-size: 15px;" type="button" class="btn btn-info btn-lg">+ افزودن به سبد خرید</button>
+                        <button style="font-size: 15px;" type="button" class="btn btn-info btn-lg" onclick="add_to_basket({{ shop_product.id }},{{ user.user_baskets.id }})">+ افزودن به سبد خرید</button>
 
                     </div>
 
