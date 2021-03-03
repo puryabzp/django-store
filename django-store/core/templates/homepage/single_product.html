@@ -103,7 +103,7 @@
                             </div>
                             <div class="d-flex justify-content-around mt-4">
                                 {% if user.is_authenticated %}
-                                 <button class="btn" style="color: rgba(247, 2, 2, 0.87);font-size: 18px;background-color: transparent;border: none" onclick="add_score({{ object.id }})"><i class="fas fa-heart"></i></button>
+                                    <button class="btn" style="color: rgba(247, 2, 2, 0.87);font-size: 18px;background-color: transparent;border: none" onclick="add_score({{ object.id }})"><i class="fas fa-heart"></i></button>
                                  {% else %}
                                     <button class="btn" style="color: gray;font-size: 18px;background-color: transparent;border: none" title="شما دسترسی جهت لایک ندارید"><i class="fas fa-heart"></i></button>
                                 {% endif %}
@@ -421,7 +421,6 @@
                                        style="display: inline;color: #4e555b;text-decoration: none">${data['author']}</a>
                                     <span>گفته که :</span>
                                     <p>${data['content']}</p>
-
                                 </div>`)
                     document.getElementById("content").value = "";
 

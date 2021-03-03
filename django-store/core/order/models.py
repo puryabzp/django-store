@@ -42,11 +42,11 @@ class Basket(models.Model):
 
 
 class BasketItem(models.Model):
-    shop_product = models.OneToOneField(ShopProduct, verbose_name=_('Shop product'), on_delete=models.CASCADE)
+    shop_product = models.ForeignKey(ShopProduct, verbose_name=_('Shop product'), on_delete=models.CASCADE)
     basket = models.ForeignKey(Basket, verbose_name=_('Basket'), on_delete=models.CASCADE, related_name='basket_item',
                                related_query_name='basket_item')
-    count = models.PositiveIntegerField(_('Count'),null=True,default=0)
-    price = models.PositiveIntegerField(_('Price'),null=True,default=0)
+    count = models.PositiveIntegerField(_('Count'), null=True, default=0)
+    price = models.PositiveIntegerField(_('Price'), null=True, default=0)
 
     def set_price(self):
         self.price = self.shop_product.price
@@ -66,6 +66,9 @@ class BasketItem(models.Model):
     def __str__(self):
         string = '{} in {}'.format(self.get_name, self.get_shop_name)
         return string
+
+    class Meta:
+        unique_together = [['shop_product', 'basket']]
 
 
 class Order(models.Model):

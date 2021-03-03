@@ -161,7 +161,8 @@ class ProductMeta(models.Model):
 
 
 class Like(models.Model):
-    user = models.ForeignKey(User, verbose_name=_('User'), on_delete=models.CASCADE,related_name='user_like', related_query_name='user_like')
+    user = models.ForeignKey(User, verbose_name=_('User'), on_delete=models.CASCADE, related_name='user_like',
+                             related_query_name='user_like')
     product = models.ForeignKey(Product, verbose_name=_('Product'), on_delete=models.CASCADE,
                                 related_name='product_like', related_query_name='product_like')
     like = models.BooleanField(_('Condition'), default=True)

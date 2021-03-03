@@ -38,10 +38,13 @@ def create_basket(request):
 @csrf_exempt
 def delete_basket(request):
     user = request.user
-    basket = Basket.objects.get(user=user)
-    basket.delete()
-    resopnse = {"basket": user.email}
-    return HttpResponse(json.dumps(resopnse), status=201)
+    try:
+        basket = Basket.objects.get(user=user)
+        basket.delete()
+    except Basket.DoesNotExist:
+        pass
+    response = {"basket": user.email}
+    return HttpResponse(json.dumps(response), status=201)
 
 
 @csrf_exempt

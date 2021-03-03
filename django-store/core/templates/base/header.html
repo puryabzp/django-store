@@ -6,14 +6,12 @@
     top: 0;z-index: 1;">
 
       <div>
-          {% if user.is_authenticated %}
               <div class="dropdown" style="display: inline;">
                 <button class="basket btn buttons dropdown-toggle mt-3 mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="create_basket()" style="font-size: 15px" ><i class="fas fa-shopping-basket"></i></button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="sabad" style="height: auto; width: 500px">
-                    <button class="btn btn-primary ml-5 mb-1" onclick="delete_basket({{ user.user_baskets.id }})" style="font-size: 13px;width: 30%">حذف سبد خرید</button>
 
                     <div style="font-size: 12px;width: 100%;height: auto" dir="rtl">
-
+                      {% if user.user_baskets %}
                         <table class="table" id="basket_list" style="text-align: center">
                             <thead>
                               <tr>
@@ -26,7 +24,7 @@
                             <button id="hide_button" onclick="test({{ user.user_baskets.id }})" hidden>dsdsd</button>
                             <tbody id="simon">
 
-                            {% for basket_item in basket_items|slice:"0:4" %}
+                            {% for basket_item in basket_items %}
                                 {% if basket_item.basket.user ==  user  %}
                                          <tr id="ef{{ basket_item.id }}">
                                             <td><img src="{{ basket_item.shop_product.product.image.url }}" style="width: 30px;height: 30px"></td>
@@ -45,32 +43,39 @@
 
                             {% endfor %}
                             </tbody>
+
                         </table>
+                        <div class="mb-1" style="text-align: center">
+                            <a style="text-align: center;font-size: 13px" href="{% url 'user_basket' %}">مشاهده سبد خرید</a>
+                        </div>
+                        <div  style="text-align: center">
+                            <button class="btn btn-primary mb-4" onclick="delete_basket({{ user.user_baskets.id }})" style="font-size: 13px;width: 30%">حذف سبد خرید</button>
+                        </div>
+                      {% else %}
+                          <div class="mx-auto">
+                           <img  style="width: 200px;height:200px; display:block;margin:auto; " src="{% static 'img/shopping_basket_full.png' %}">
+                              <p style="text-align: center;font-size: 15px">سبدی برای شما موجود نیست!</p>
+                          </div>
+
+                      {% endif %}
+
+
 
                     </div>
-                    <div style="text-align: center">
-                        <a style="text-align: center;font-size: 13px" href="{% url 'user_basket' %}">مشاهده سبد خرید</a>
-                    </div>
+
 
 
 
                 </div>
           </div>
-          {% else %}
-              <div style="display: inline">
-               <button class="basket btn mt-3 mr-1"  style="font-size: 15px;color: lightslategray" title="شما سبد خریدی ندارید" ><i class="fas fa-shopping-basket"></i></button>
-              </div>
-          {% endif %}
-
-
 
         <span class="m-2">|</span>
           {% if user.is_authenticated %}
 
-              <button class="login_btn"><a href="{% url 'logout' %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold">خروج از حساب کاربری</a> <i class="fas fa-user"></i></button>
-              <button class="login_btn"><a href="{% url 'user_details' request.user.slug %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold">مشاهده پروفایل کاربری</a> <i class="fas fa-user"></i></button>
+              <button class="login_btn"><a href="{% url 'logout' %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold;font-size: 13px">خروج از حساب کاربری</a> <i class="fas fa-user"></i></button>
+              <button class="login_btn"><a href="{% url 'user_details' request.user.slug %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold;font-size: 13px">{{ user.email }}</a> <i class="fas fa-user"></i></button>
           {% else %}
-              <button class="login_btn"><a href="{% url 'login' %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold">ورود به حساب کاربری</a> <i class="fas fa-user"></i></button>
+              <button class="login_btn"><a href="{% url 'login' %}" style="color: black;text-decoration: none;text-align: center;font-weight: bold;font-size: 13px">ورود به حساب کاربری</a> <i class="fas fa-user"></i></button>
           {% endif %}
 
       </div>
@@ -177,6 +182,7 @@ function create_basket() {
                 url: "{% url 'delete_basket' %}",
                 success: function (response) {
                     console.log(response)
+                    location.reload(true);
 
 
                 }

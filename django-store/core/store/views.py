@@ -210,6 +210,22 @@ def add_score(request):
     return HttpResponse(json.dumps(response), status=201)
 
 
+@csrf_exempt
+def minus_score(request):
+    data = json.loads(request.body)
+    product_id = data['product_id']
+    product = Product.objects.get(id=product_id)
+    try:
+        like = Like.objects.get(product=product, user=request.user)
+        like.delete()
+
+    except:
+
+        pass
+    response = {'dislike_count': product.like_count, }
+    return HttpResponse(json.dumps(response), status=201)
+
+
 class ShopProductCreate(CreateView):
     model = ShopProduct
     form_class = AddShopProduct
